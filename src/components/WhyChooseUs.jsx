@@ -173,7 +173,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section className="why-choose-us bg-[var(--dxb-white)] text-[var(--dxb-black)] py-16">
+    <section className="why-choose-us bg-[var(--dxb-white)] text-[var(--dxb-black)] pt-16">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="wc-heading text-3xl sm:text-4xl font-extrabold">

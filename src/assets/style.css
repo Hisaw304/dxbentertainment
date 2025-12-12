@@ -807,7 +807,7 @@
 
 .btn-wa {
   background: var(--dxb-yellow);
-  color: var(--dxb-white);
+  color: var(--dxb-black);
   font-weight: 700;
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
 }

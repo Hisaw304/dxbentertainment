@@ -86,7 +86,7 @@ export default function FAQSection() {
 
   return (
     <section className="faq-root" aria-labelledby="faq-heading">
-      <div className="faq-inner max-w-6xl mx-auto px-6 lg:px-8 py-16">
+      <div className="faq-inner max-w-6xl mx-auto px-6 lg:px-8 pt-16">
         <header className="faq-header text-center mb-8">
           <h2 id="faq-heading" className="faq-title">
             Question? <span className="faq-highlight">Look here.</span>

@@ -78,6 +78,20 @@ export default function Hero({
         <AnimatePresence exitBeforeEnter>
           {index === 0 && (
             <motion.div
+              key="img1"
+              variants={bgVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.7 }}
+              className="absolute inset-0"
+            >
+              <img src={imageSrcs[0]} alt="hero 1" className="w-full h-full" />
+              <div className="hero-overlay absolute inset-0 pointer-events-none" />
+            </motion.div>
+          )}
+          {index === 1 && (
+            <motion.div
               key="video"
               variants={bgVariants}
               initial="enter"
@@ -94,21 +108,6 @@ export default function Hero({
                 muted
                 playsInline
               />
-              <div className="hero-overlay absolute inset-0 pointer-events-none" />
-            </motion.div>
-          )}
-
-          {index === 1 && (
-            <motion.div
-              key="img1"
-              variants={bgVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <img src={imageSrcs[0]} alt="hero 1" className="w-full h-full" />
               <div className="hero-overlay absolute inset-0 pointer-events-none" />
             </motion.div>
           )}
@@ -132,7 +131,7 @@ export default function Hero({
 
       {/* foreground content (constrained width on large screens so media visible to the right) */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
-        <div className="hero-content pt-12 md:pt-20 lg:pt-28">
+        <div className="hero-content md:pt-20 lg:pt-28">
           <h1 className="hero-heading text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
             <span className="text-white">DXB STARS</span>
           </h1>
@@ -179,7 +178,7 @@ export default function Hero({
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-20"
+        className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-20 mx-auto px-6 lg:px-12"
       >
         <div
           className="rounded-2xl shadow-2xl p-6 w-[320px] border"
@@ -213,6 +212,7 @@ export default function Hero({
               background: "var(--dxb-pink)",
               color: "var(--dxb-white)",
             }}
+            href="#hire-dancers"
           >
             Contact Us Now
           </button>

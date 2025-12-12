@@ -87,7 +87,7 @@ export default function Testimonials() {
       className="testimonials-section"
       aria-labelledby="testimonials-heading"
     >
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 pt-16">
         <header className="text-center mb-8">
           <h2 id="testimonials-heading" className="testimonials-heading">
             Sweet Words from Our Clients
@@ -113,6 +113,7 @@ export default function Testimonials() {
             }}
             breakpoints={{
               320: { slidesPerView: 1 },
+              600: { slidesPerView: 2 },
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
