@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import heroVideo from "../assets/hero.mp4";
+import heroVideo from "../assets/hero2.mp4";
 import heroImg1 from "../assets/hero1.png";
 import heroImg2 from "../assets/hero2.png";
 
