@@ -5,7 +5,7 @@ import BookAClass from "../components/BookAClass";
 import HireDancers from "../components/HireDancers";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "../components/Services";
-import FAQ from "../components/FAQ.JSX";
+import FAQ from "../components/FAQSection.jsx";
 import Testimonials from "../components/Testimonials";
 
 const Home = () => {
