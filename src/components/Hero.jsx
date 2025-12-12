@@ -131,7 +131,14 @@ export default function Hero({
 
       {/* foreground content (constrained width on large screens so media visible to the right) */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
-        <div className="hero-content md:pt-20 lg:pt-28">
+        <div className="hero-content pt-2 md:pt-20 lg:pt-28">
+          <motion.p
+            variants={textVariants}
+            className="inline-block bg-[var(--dxb-pink)] text-white px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest shadow-md"
+          >
+            Shows | Events | Classes | Entertainment
+          </motion.p>
+
           <h1 className="hero-heading text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
             <span className="text-white">DXB STARS</span>
           </h1>
@@ -178,7 +185,7 @@ export default function Hero({
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-20 mx-auto px-6 lg:px-12"
+        className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 md:pt-20 lg:pt-28 z-20 mx-auto px-6 lg:px-12"
       >
         <div
           className="rounded-2xl shadow-2xl p-6 w-[320px] border"
