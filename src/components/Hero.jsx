@@ -90,7 +90,7 @@ export default function Hero({
               <div className="hero-overlay absolute inset-0 pointer-events-none" />
             </motion.div>
           )}
-          {index === 1 && (
+          {index === 2 && (
             <motion.div
               key="video"
               variants={bgVariants}
@@ -112,7 +112,7 @@ export default function Hero({
             </motion.div>
           )}
 
-          {index === 2 && (
+          {index === 1 && (
             <motion.div
               key="img2"
               variants={bgVariants}
