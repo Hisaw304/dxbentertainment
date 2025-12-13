@@ -2,7 +2,7 @@
 // File: src/components/HireDancers.jsx
 // ------------------------------
 import React, { useState } from "react";
-import showVideo from "../assets/hero.mp4";
+import showVideo from "../assets/herod.mp4";
 
 export function HireDancers() {
   const [form, setForm] = useState({
