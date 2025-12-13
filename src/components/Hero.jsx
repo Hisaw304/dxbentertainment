@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Instagram, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import heroVideo from "../assets/hero3.mp4";
 import heroImg1 from "../assets/hero1.png";
@@ -178,8 +180,41 @@ export default function Hero({
               Book a Class
             </a>
           </div>
+
+          {/* hero meta row */}
+          <div className="hero-meta">
+            <div className="hero-meta-item">
+              <span className="hero-meta-label">Follow us</span>
+
+              <a
+                href="#"
+                className="hero-social"
+                aria-label="Follow DXB STARS on Instagram"
+              >
+                <Instagram size={18} />
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href="#"
+                className="hero-social"
+                aria-label="Follow DXB STARS on TikTok"
+              >
+                <Music2 size={18} />
+                <span>TikTok</span>
+              </a>
+            </div>
+
+            <span className="hero-meta-separator" />
+
+            <div className="hero-meta-item">
+              <span className="hero-meta-icon">📍</span>
+              <span>Dubai Marina, Dubai, UAE</span>
+            </div>
+          </div>
         </div>
       </div>
+
       {/* Right-side floating card (desktop only) */}
       <motion.div
         initial={{ opacity: 0, x: 80 }}
@@ -201,7 +236,6 @@ export default function Hero({
           >
             Need dancers for your event?
           </h3>
-
           <p
             className="text-sm mt-3 leading-relaxed"
             style={{ color: "rgba(0,0,0,0.7)" }}
@@ -212,17 +246,17 @@ export default function Hero({
             <br />
             Contact us now.
           </p>
-
-          <button
-            className="mt-5 w-full py-3 rounded-xl font-semibold transition"
+          <Link
+            to="/contact"
+            className="mt-5 w-full py-3 rounded-xl font-semibold transition text-center block"
             style={{
               background: "var(--dxb-pink)",
               color: "var(--dxb-white)",
             }}
-            href="#hire-dancers"
           >
             Contact Us Now
-          </button>
+          </Link>
+          ;
         </div>
       </motion.div>
 
