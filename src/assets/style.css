@@ -491,7 +491,7 @@
 }
 
 .services-sub {
-  color: #fff; /* text over dark overlay */
+  color: var(--dxb-black); /* text over dark overlay */
   opacity: 0.85;
   margin: 0.5rem auto 0;
   font-size: 0.98rem;
