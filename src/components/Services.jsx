@@ -28,28 +28,20 @@ const ServiceCard = ({
   return (
     <article
       className="svc-card"
-      style={{ animationDelay: `${delay}ms` }}
+      style={{ animationDelay: `${delay}ms`, backgroundImage: `url(${img})` }}
       aria-labelledby={`svc-${title.replace(/\s+/g, "-").toLowerCase()}`}
     >
-      <div className="svc-media" role="img" aria-label={title}>
-        <img src={img} alt={title} className="svc-media-img" />
-      </div>
-
+      <div className="svc-overlay" />
       <div className="svc-body">
         <h3
-          id={`svc-${title.replace(/\s+/g, "-").toLowerCase()}`}
           className="svc-title"
+          id={`svc-${title.replace(/\s+/g, "-").toLowerCase()}`}
         >
           {title}
         </h3>
         <p className="svc-text">{text}</p>
-
         <div className="svc-actions">
-          <a
-            href={primaryHref}
-            className="btn-primaryyy"
-            aria-label={`${primaryText} — ${title}`}
-          >
+          <a href={primaryHref} className="btn-primaryyy">
             {primaryText}
           </a>
         </div>
