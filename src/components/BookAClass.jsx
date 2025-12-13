@@ -1,7 +1,7 @@
 // src/components/BookAClass.jsx
 import React, { useState } from "react";
 import classNames from "classnames";
-import heroVideo from "../assets/herod.mp4";
+import heroVideo from "../assets/herodc.mp4";
 
 export function BookAClass() {
   const [form, setForm] = useState({

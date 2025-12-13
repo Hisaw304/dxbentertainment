@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import heroVideo from "../assets/hero3.mp4";
+import heroVideo from "../assets/herodc.mp4";
 import heroImg1 from "../assets/hero1.png";
 import heroImg2 from "../assets/hero2.png";
 

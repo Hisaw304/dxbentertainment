@@ -7,6 +7,7 @@ import imgWeddings from "../assets/weddings1.jpg";
 import imgGroup from "../assets/group-classes1.jpg";
 import imgPrivate from "../assets/private-coaching1.jpg";
 import imgKids from "../assets/kids-teens.jpg";
+import imgDrummers from "../assets/africa-drummers.jpg";
 
 /**
  * Services.jsx
@@ -72,6 +73,13 @@ export default function Services() {
       text: "Polished choreography and bespoke entertainment for premium ceremonies and corporate evenings.",
       cta: "Hire Dancers",
       href: "/hire-dancers",
+    },
+    {
+      img: imgDrummers,
+      title: "African Drummers",
+      text: "Authentic African drumming performances bringing rhythm, energy and cultural flair to any event.",
+      cta: "Hire Drummers",
+      href: "/hire-drummers",
     },
   ];
 
