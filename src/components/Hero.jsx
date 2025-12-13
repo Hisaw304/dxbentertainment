@@ -230,11 +230,11 @@ export default function Hero({
       <div className="hero-stats z-20">
         <div className="hero-stats-inner">
           <div className="stat">
-            <div className="stat-num">200+</div>
+            <div className="stat-num">100+</div>
             <div className="stat-label">Professional Dancers</div>
           </div>
           <div className="stat">
-            <div className="stat-num">350+</div>
+            <div className="stat-num">1000+</div>
             <div className="stat-label">Events & Shows</div>
           </div>
           <div className="stat">

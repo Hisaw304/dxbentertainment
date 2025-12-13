@@ -1030,3 +1030,132 @@
     transition: none;
   }
 }
+/* ---------- CONTACT INFO (MODERN) ---------- */
+.contact-page {
+  background: var(--dxb-white);
+}
+
+/* ---------- HERO ---------- */
+.contact-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 420px;
+  background-image: url("/assets/contact-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65));
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  color: var(--dxb-white);
+}
+
+.contact-hero-content h1 {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.contact-hero-content p {
+  max-width: 640px;
+  font-size: 1.15rem;
+  opacity: 0.95;
+}
+
+.contact-info {
+  padding: 5rem 1.5rem;
+  background: #fafafa;
+}
+
+.contact-info-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+
+.contact-card {
+  background: var(--dxb-white);
+  border-radius: var(--svc-radius);
+  padding: 2.25rem;
+  box-shadow: var(--svc-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(10, 10, 12, 0.12);
+}
+
+.contact-card h3 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  margin: 1rem 0 0.75rem;
+  color: var(--dxb-black);
+}
+
+.contact-card p,
+.contact-card a {
+  font-size: 0.95rem;
+  color: #333;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.contact-card a:hover {
+  color: var(--dxb-pink);
+}
+
+/* ICONS */
+.contact-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--dxb-pink);
+}
+
+.contact-icon.small {
+  width: 20px;
+  height: 20px;
+  margin-top: 1rem;
+}
+
+/* DIVIDER */
+.contact-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 1.25rem 0;
+}
+
+/* SOCIALS */
+.contact-socials-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.contact-socials-modern a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 600;
+}
+
+.contact-socials-modern svg {
+  width: 18px;
+  height: 18px;
+  color: var(--dxb-pink);
+}

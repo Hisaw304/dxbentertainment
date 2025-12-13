@@ -45,7 +45,7 @@ export default function Navbar({ logoPath = "/logo.png" }) {
   };
 
   return (
-    <header className="fixed inset-x-4 top-4 z-50 md:inset-x-8">
+    <header className="fixed inset-x-4 top-4 z-5000 md:inset-x-8">
       <nav
         className="rounded-2xl border border-black/5 shadow-lg px-4 md:px-6 py-3 flex items-center justify-between gap-4 backdrop-blur-xl"
         style={{ background: "rgba(255,255,255,0.95)" }}
