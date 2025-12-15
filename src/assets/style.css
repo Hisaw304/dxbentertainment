@@ -1498,18 +1498,16 @@ Contact form for dance and class
 .about-team {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
 }
 
 /* Heading */
 .about-team > .about-preview-heading {
-  margin-bottom: 3rem;
 }
 
 /* Content grid */
 .about-team-content {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* LEFT: text | RIGHT: image */
+  grid-template-columns: 1fr 1fr;
   gap: 3.5rem;
   align-items: center;
 }
@@ -1522,7 +1520,6 @@ Contact form for dance and class
 .about-team-text p {
   margin-bottom: 1.4rem;
   line-height: 1.7;
-  color: #222;
 }
 
 /* Image */
