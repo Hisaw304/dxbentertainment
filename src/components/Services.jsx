@@ -3,7 +3,7 @@ import React from "react";
 
 import imgEvent from "../assets/event-dancers1.jpg";
 import imgNightlife from "../assets/club-shows1.jpg";
-import imgWeddings from "../assets/weddings1.jpg";
+import imgWeddings from "../assets/weddings2.jpg";
 import imgGroup from "../assets/group-classes1.jpg";
 import imgPrivate from "../assets/private-coaching1.jpg";
 import imgKids from "../assets/kids-teens.jpg";
