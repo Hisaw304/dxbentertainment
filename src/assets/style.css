@@ -1925,3 +1925,174 @@ Contact form for dance and class
     height: auto;
   }
 }
+/* ===============================
+   HOW IT WORKS SECTION
+================================ */
+
+.how-section {
+  background: var(--dxb-pink);
+  padding: 4.5rem 1.5rem;
+  color: var(--dxb-white);
+}
+
+.how-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER ---------- */
+.how-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.how-header h2 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.how-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ---------- GRID ---------- */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* ---------- CARD ---------- */
+.how-card {
+  background: var(--dxb-white);
+  color: var(--dxb-black);
+  border-radius: var(--svc-radius);
+  padding: 2.2rem;
+  box-shadow: var(--svc-shadow);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.how-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- TAG ---------- */
+.how-tag {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--dxb-yellow);
+  color: var(--dxb-black);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- ICON ---------- */
+.how-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--dxb-pink);
+  color: var(--dxb-white);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+/* ---------- TITLE ---------- */
+.how-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* ---------- LIST ---------- */
+.how-card ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.how-card li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+
+.how-card li svg {
+  flex-shrink: 0;
+  color: var(--dxb-pink);
+}
+
+/* ---------- CTA ---------- */
+.how-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+/* PRIMARY BUTTON */
+.how-btn-primary {
+  background: var(--dxb-yellow);
+  color: var(--dxb-black);
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.how-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* OUTLINE BUTTON */
+.how-btn-outline {
+  border: 2px solid var(--dxb-white);
+  color: var(--dxb-white);
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.how-btn-outline:hover {
+  background: var(--dxb-white);
+  color: var(--dxb-black);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-header h2 {
+    font-size: 2rem;
+  }
+
+  .how-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .how-btn-primary,
+  .how-btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+}

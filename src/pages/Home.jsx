@@ -8,6 +8,7 @@ import Services from "../components/Services";
 import FAQ from "../components/FAQSection.jsx";
 import Testimonials from "../components/Testimonials";
 import AboutUs from "../components/AboutUs.jsx";
+import HowItWorks from "../components/HowItWorks.jsx";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Hero />
       <HireDancers />
       <BookAClass />
+      <HowItWorks />
       <WhyChooseUs />
       <AboutUs />
       <Services />
