@@ -146,31 +146,50 @@ export function HireDancers() {
 
               {/* datetime + dancers count */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <input
-                  id="datetime"
-                  name="datetime"
-                  value={form.datetime}
-                  onChange={handleChange}
-                  type="datetime-local"
-                  className="input-field"
-                />
-                <select
-                  id="dancers"
-                  name="dancers"
-                  value={form.dancers}
-                  onChange={handleChange}
-                  className="input-field select-field"
-                  required
-                >
-                  <option value="" disabled>
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="datetime"
+                    className="text-sm font-medium text-black/70"
+                  >
+                    Event date & time
+                  </label>
+
+                  <input
+                    id="datetime"
+                    name="datetime"
+                    type="datetime-local"
+                    value={form.datetime}
+                    onChange={handleChange}
+                    className="input-field"
+                    required
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="dancers"
+                    className="text-sm font-medium text-black/70"
+                  >
                     Number of dancers
-                  </option>
-                  <option value="1">1 dancer</option>
-                  <option value="2">2 dancers</option>
-                  <option value="3">3 dancers</option>
-                  <option value="4">4 dancers</option>
-                  <option value="5+">5+ dancers</option>
-                </select>
+                  </label>
+
+                  <select
+                    id="dancers"
+                    name="dancers"
+                    value={form.dancers}
+                    onChange={handleChange}
+                    className="input-field select-field"
+                    required
+                  >
+                    <option value="" disabled>
+                      Select number
+                    </option>
+                    <option value="1">1 dancer</option>
+                    <option value="2">2 dancers</option>
+                    <option value="3">3 dancers</option>
+                    <option value="4">4 dancers</option>
+                    <option value="5+">5+ dancers</option>
+                  </select>
+                </div>
               </div>
 
               {/* message */}
