@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import WhatsApp from "../components/Whatsapp";
 import BookAClass from "../components/BookAClass";
@@ -11,8 +11,37 @@ import AboutUs from "../components/AboutUs.jsx";
 import HowItWorks from "../components/HowItWorks.jsx";
 
 const Home = () => {
+  const [paymentStatus, setPaymentStatus] = useState(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("payment");
+
+    if (status === "success" || status === "cancel") {
+      setPaymentStatus(status);
+
+      // clean URL after reading
+      window.history.replaceState({}, "", "/");
+    }
+  }, []);
+
   return (
     <div>
+      {/* 🔔 PAYMENT MESSAGE */}
+      {paymentStatus === "success" && (
+        <div className="payment-banner success">
+          Payment successful 🎉 We’ve received your booking and will contact you
+          shortly.
+        </div>
+      )}
+
+      {paymentStatus === "cancel" && (
+        <div className="payment-banner cancel">
+          Payment cancelled. You can book again anytime or contact us on
+          WhatsApp.
+        </div>
+      )}
+
       <Hero />
       <HireDancers />
       <BookAClass />

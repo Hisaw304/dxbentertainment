@@ -2096,3 +2096,22 @@ Contact form for dance and class
     text-align: center;
   }
 }
+.payment-banner {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 18px 22px;
+  border-radius: var(--svc-radius);
+  text-align: center;
+  font-weight: 600;
+  box-shadow: var(--svc-shadow);
+}
+
+.payment-banner.success {
+  background: var(--dxb-pink);
+  color: var(--dxb-white);
+}
+
+.payment-banner.cancel {
+  background: var(--dxb-yellow);
+  color: var(--dxb-black);
+}

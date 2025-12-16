@@ -1,6 +1,5 @@
 // src/components/BookAClass.jsx
 import React, { useState, useMemo } from "react";
-import classNames from "classnames";
 import heroVideo from "../assets/herodc.mp4";
 
 export function BookAClass() {

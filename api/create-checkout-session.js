@@ -96,8 +96,9 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.SITE_URL}/success`,
-      cancel_url: `${process.env.SITE_URL}/cancel`,
+      success_url: `${process.env.SITE_URL}?payment=success`,
+      cancel_url: `${process.env.SITE_URL}?payment=cancel`,
+
       metadata: {
         name,
         email,
