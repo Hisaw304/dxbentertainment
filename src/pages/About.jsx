@@ -166,25 +166,25 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="about-cta">
-        <h2>Interested in Working With Us?</h2>
-        <p>
-          Whether you’re looking to book professional dancers or join our dance
-          classes, DXB STARS makes the process simple.
-        </p>
-
-        <div className="about-cta-buttons">
-          <a href="/contact" className="about-btn-primary">
-            Book Us for a Show
-          </a>
-          <a href="/dance-classes" className="about-btn-outline">
-            Join a Dance Class
-          </a>
-        </div>
-      </section>
       <div>
         <PortfolioVideos />
+        {/* CTA */}
+        <section className="about-cta">
+          <h2>Interested in Working With Us?</h2>
+          <p>
+            Whether you’re looking to book professional dancers or join our
+            dance classes, DXB STARS makes the process simple.
+          </p>
+
+          <div className="about-cta-buttons">
+            <a href="/contact" className="about-btn-primary">
+              Book Us for a Show
+            </a>
+            <a href="/dance-classes" className="about-btn-outline">
+              Join a Dance Class
+            </a>
+          </div>
+        </section>
         <WhatsApp />
       </div>
     </main>

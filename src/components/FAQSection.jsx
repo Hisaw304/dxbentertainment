@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import { MessageCircle } from "lucide-react";
 
-/**
- * FAQ.jsx
- * - Accessible accordion for FAQ
- * - Open state: pink bg / white text
- * - Closed state: white bg / black text
- * - Right-side support card with Email + WhatsApp CTAs
- * - Uses root CSS variables: --dxb-pink, --dxb-yellow, --dxb-white, --dxb-black
- */
+const INITIAL_VISIBLE = 6;
 
 const WA_NUMBER = "18608213853"; // keep your number (used earlier). Change if needed.
 const EMAIL = "info@dxbentertainment.com";
 
 const FAQ_ITEMS = [
-  // Performance / Events
   {
     q: "Do you perform outside Dubai or the UAE?",
     a: "Yes — we accept international bookings. Our team has experience touring and coordinating travel logistics for shows, corporate events and festivals. Contact us early for availability and travel arrangements.",
@@ -79,6 +71,9 @@ const FAQ_ITEMS = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleFaqs = showAll ? FAQ_ITEMS : FAQ_ITEMS.slice(0, INITIAL_VISIBLE);
 
   function toggle(i) {
     setOpenIndex((prev) => (prev === i ? null : i));
@@ -99,7 +94,7 @@ export default function FAQSection() {
         <div className="faq-grid">
           {/* left: accordion list */}
           <div className="faq-list" role="list">
-            {FAQ_ITEMS.map((item, i) => {
+            {visibleFaqs.map((item, i) => {
               const isOpen = openIndex === i;
               return (
                 <div
@@ -164,6 +159,17 @@ export default function FAQSection() {
                 </div>
               );
             })}
+            {FAQ_ITEMS.length > INITIAL_VISIBLE && (
+              <div className="faq-more text-center mt-6">
+                <button
+                  type="button"
+                  className="faq-more-btn"
+                  onClick={() => setShowAll((prev) => !prev)}
+                >
+                  {showAll ? "Show fewer questions" : "Show more questions"}
+                </button>
+              </div>
+            )}
           </div>
 
           {/* right: support card */}

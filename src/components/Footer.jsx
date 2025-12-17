@@ -10,7 +10,7 @@ import React from "react";
 
 export function Footer({ logoPath = "/logo.png" }) {
   return (
-    <footer className="bg-white text-black mt-24">
+    <footer className="bg-white text-black ">
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Brand & blurb */}
         <div className="space-y-3">

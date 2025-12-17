@@ -6,8 +6,16 @@ export default function AboutUs() {
   return (
     <section className="about-preview">
       {/* Heading */}
-      <h2 className="about-preview-heading text-center">Who We Are</h2>
-
+      {/* <h2 className="about-preview-heading text-center">About us</h2> */}
+      <div className="text-center max-w-2xl mx-auto mb-12">
+        <h2 className="wc-heading text-3xl sm:text-4xl font-extrabold">
+          About DXB STARS
+        </h2>
+        <p className="wc-sub mt-3 mb-3 text-base">
+          Dubai’s premier collective of professional dancers, performers, and
+          dance educators.
+        </p>
+      </div>
       {/* Content */}
       <div className="about-preview-grid">
         <div className="about-preview-text">

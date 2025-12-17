@@ -2,8 +2,12 @@
 // File: src/components/HireDancers.jsx
 // ------------------------------
 import React, { useState } from "react";
-import showVideo from "../assets/herod.mp4";
 
+const showVideo = {
+  src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_fmubvc.mp4",
+  poster:
+    "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_fmubvc.jpg",
+};
 export function HireDancers() {
   const [form, setForm] = useState({
     clientName: "",
@@ -90,15 +94,29 @@ export function HireDancers() {
         {/* Left: video */}
         <div className="media-wrap rounded-xl overflow-hidden shadow-lg flex items-stretch">
           <div className="w-full">
+            {/* <video
+              ref={videoRef}
+              src={showVideo.src}
+              poster={showVideo.poster}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Showreel"
+              style={{ objectPosition: "center 22%" }}
+            /> */}
             <video
-              src={showVideo}
+              // ref={videoRef}
+              src={showVideo.src}
+              poster={showVideo.poster}
               autoPlay
               muted
               loop
               playsInline
               aria-label="Showreel"
               className="w-full h-[420px] lg:h-[520px] object-cover"
-              style={{ objectPosition: "center 22%" }} // prioritize upper area (dancers' heads)
+              style={{ objectPosition: "center 22%" }} //
             />
           </div>
         </div>

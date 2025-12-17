@@ -998,6 +998,22 @@ Contact form for dance and class
 .faq-support {
   display: block;
 }
+.faq-more-btn {
+  background: transparent;
+  border: 2px solid var(--dxb-pink);
+  color: var(--dxb-pink);
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.faq-more-btn:hover {
+  background: var(--dxb-pink);
+  color: var(--dxb-white);
+  transform: translateY(-2px);
+}
 
 .support-card {
   background: var(--dxb-white);
@@ -1738,7 +1754,7 @@ Contact form for dance and class
   padding: 4rem 1.5rem;
 }
 
-.about-cta h2 {
+.about-cta h1 {
   color: var(--dxb-pink);
 }
 
