@@ -10,6 +10,7 @@ import Testimonials from "../components/Testimonials";
 import AboutUs from "../components/AboutUs.jsx";
 import HowItWorks from "../components/HowItWorks.jsx";
 import DanceClasses from "../components/DanceClasses.jsx";
+import PortfolioVideos from "../components/PortfolioVideos.jsx";
 
 const Home = () => {
   const [paymentStatus, setPaymentStatus] = useState(null);
@@ -57,6 +58,7 @@ const Home = () => {
       <AboutUs />
       <Services />
       <DanceClasses />
+      <PortfolioVideos />
       <FAQ />
       <Testimonials />
       <WhatsApp />

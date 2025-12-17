@@ -2,20 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import heroVideo from "../assets/herodc.mp4";
 import heroImg1 from "../assets/hero1.png";
 import heroImg2 from "../assets/hero2.png";
 
-/**
- * Hero.jsx (updated)
- * - Keeps video -> image -> image cycle
- * - Ensures media object-position is shifted up on large screens so dancers' heads are visible
- * - Constrains text column width on large screens so background media shows on the right
- * - Props: videoSrc, imageSrcs, slides, durations
- */
-
+const heroVideo = {
+  src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_fmubvc.mp4",
+  poster:
+    "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_fmubvc.jpg",
+};
 export default function Hero({
-  videoSrc = heroVideo,
   imageSrcs = [heroImg1, heroImg2],
   slides = [
     {
@@ -104,12 +99,15 @@ export default function Hero({
             >
               <video
                 ref={videoRef}
-                src={videoSrc}
-                className="w-full h-full"
+                src={heroVideo.src}
+                poster={heroVideo.poster}
+                className="w-full h-full object-cover"
                 autoPlay
                 muted
                 playsInline
+                preload="metadata"
               />
+
               <div className="hero-overlay absolute inset-0 pointer-events-none" />
             </motion.div>
           )}

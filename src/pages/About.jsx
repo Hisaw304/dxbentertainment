@@ -5,6 +5,7 @@ import imgAboutHero from "../assets/about-herosec.jpg";
 import imgTeam from "../assets/team.jpg";
 import imgTeam2 from "../assets/aboutinfo.jpg";
 import WhatsApp from "../components/Whatsapp";
+import PortfolioVideos from "../components/PortfolioVideos";
 
 export default function About() {
   return (
@@ -183,6 +184,7 @@ export default function About() {
         </div>
       </section>
       <div>
+        <PortfolioVideos />
         <WhatsApp />
       </div>
     </main>
