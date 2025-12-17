@@ -79,7 +79,7 @@ export default function HowItWorks() {
           <a href="#book-a-class" className="how-btn-primary">
             Book a Class
           </a>
-          <a href="/contact" className="how-btn-outline">
+          <a href="#hire-dancers" className="how-btn-outline">
             Book a Show
           </a>
         </div>

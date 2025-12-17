@@ -57,7 +57,7 @@ export default async function handler(req, res) {
     /* ---------- STUDIO EMAIL ---------- */
     const studioMail = {
       from: `"New Booking Request" <${process.env.SMTP_USER}>`,
-      to: process.env.STUDIO_EMAIL,
+      to: process.env.SMTP_USER,
       subject: "New Performance / Costume Booking",
       html: studioEmailTemplate({
         clientName,
