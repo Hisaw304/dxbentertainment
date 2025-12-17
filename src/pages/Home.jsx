@@ -9,9 +9,16 @@ import FAQ from "../components/FAQSection.jsx";
 import Testimonials from "../components/Testimonials";
 import AboutUs from "../components/AboutUs.jsx";
 import HowItWorks from "../components/HowItWorks.jsx";
+import DanceClasses from "../components/DanceClasses.jsx";
 
 const Home = () => {
   const [paymentStatus, setPaymentStatus] = useState(null);
+  useEffect(() => {
+    if (paymentStatus) {
+      const timer = setTimeout(() => setPaymentStatus(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [paymentStatus]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -49,6 +56,7 @@ const Home = () => {
       <WhyChooseUs />
       <AboutUs />
       <Services />
+      <DanceClasses />
       <FAQ />
       <Testimonials />
       <WhatsApp />

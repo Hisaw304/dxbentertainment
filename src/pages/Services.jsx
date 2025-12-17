@@ -11,6 +11,8 @@ import imgClub from "../assets/club-dancers.jpg";
 import imgCostume from "../assets/dance-costume-rental.jpg";
 import Services from "../components/Services";
 import imgServicesHero from "../assets/services-hero.jpg";
+import WhatsApp from "../components/Whatsapp";
+import DanceClasses from "../components/DanceClasses";
 
 const ServiceFeature = ({ title, text, img, cta, reverse }) => {
   return (
@@ -123,7 +125,9 @@ export default function ServicesPage() {
         Learn technique, choreography, and performance skills across styles."
       />
       <div>
+        <DanceClasses />
         <Services />
+        <WhatsApp />
       </div>
     </main>
   );

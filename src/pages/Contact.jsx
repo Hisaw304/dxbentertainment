@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import contactHero from "../assets/contact-hero.jpg";
 import { MapPin, Phone, Mail, Instagram, Facebook, Music } from "lucide-react";
+import WhatsApp from "../components/Whatsapp";
 
 const Contact = () => {
   return (
@@ -104,6 +105,9 @@ const Contact = () => {
           </Marker>
         </MapContainer>
       </section>
+      <div>
+        <WhatsApp />
+      </div>
     </main>
   );
 };

@@ -4,6 +4,7 @@ import React from "react";
 import imgAboutHero from "../assets/about-herosec.jpg";
 import imgTeam from "../assets/team.jpg";
 import imgTeam2 from "../assets/aboutinfo.jpg";
+import WhatsApp from "../components/Whatsapp";
 
 export default function About() {
   return (
@@ -181,6 +182,9 @@ export default function About() {
           </a>
         </div>
       </section>
+      <div>
+        <WhatsApp />
+      </div>
     </main>
   );
 }
