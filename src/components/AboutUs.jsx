@@ -18,6 +18,9 @@ export default function AboutUs() {
       </div>
       {/* Content */}
       <div className="about-preview-grid">
+        <div className="about-preview-image">
+          <img src={imgTeam2} alt="DXB Stars Team" />
+        </div>
         <div className="about-preview-text">
           <p>
             DXB STARS is a Dubai-based collective of professional dancers,
@@ -37,10 +40,6 @@ export default function AboutUs() {
             Our dancers don’t simply perform. They represent brands, elevate
             venues, and create moments that remain long after the music stops.
           </p>
-        </div>
-
-        <div className="about-preview-image">
-          <img src={imgTeam2} alt="DXB Stars Team" />
         </div>
       </div>
       {/* CENTERED CTA */}
