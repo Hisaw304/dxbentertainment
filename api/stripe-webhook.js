@@ -183,7 +183,7 @@ async function sendEmails({
   // ---------- STUDIO EMAIL ----------
   const studioMail = {
     from: `"Booking Notification" <${process.env.SMTP_USER}>`,
-    to: process.env.STUDIO_EMAIL,
+    to: process.env.SMTP_USER,
     subject: "New Class Booking Received",
     html: `
   <div style="font-family:Arial,Helvetica,sans-serif;background:#ffffff;padding:20px;color:#000000;">
