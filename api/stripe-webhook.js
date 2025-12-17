@@ -90,7 +90,7 @@ async function sendEmails({
 
   // ---------- STUDENT EMAIL ----------
   const studentMail = {
-    from: `"Dance Studio" <${process.env.SMTP_USER}>`,
+    from: `"DXB Entertainment" <${process.env.SMTP_USER}>`,
     to: studentEmail,
     subject: "Your Dance Class Booking Confirmation",
     html: `

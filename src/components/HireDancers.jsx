@@ -11,9 +11,11 @@ export function HireDancers() {
     phone: "",
     location: "",
     datetime: "",
-    dancers: "1",
+    services: [], // dancers | costumes | drummers
+    quantity: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -21,29 +23,44 @@ export function HireDancers() {
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
   }
+  function handleCheckboxChange(e) {
+    const { value, checked } = e.target;
+
+    setForm((s) => ({
+      ...s,
+      services: checked
+        ? [...s.services, value]
+        : s.services.filter((v) => v !== value),
+    }));
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
+
     try {
       const res = await fetch("/api/contactshow", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Network response was not ok");
+
+      if (!res.ok) throw new Error("Request failed");
+
       setMessage({
         type: "success",
         text: "Request received — our bookings team will reach out.",
       });
+
       setForm({
         clientName: "",
         email: "",
         phone: "",
         location: "",
         datetime: "",
-        dancers: "1",
+        services: [],
+        quantity: "",
         message: "",
       });
     } catch (err) {
@@ -131,6 +148,47 @@ export function HireDancers() {
                   className="input-field"
                 />
               </div>
+              {/* services */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-black/70">
+                  Services required
+                </label>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      name="services"
+                      value="dancers"
+                      checked={form.services.includes("dancers")}
+                      onChange={handleCheckboxChange}
+                    />
+                    Dancers
+                  </label>
+
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      name="services"
+                      value="costumes"
+                      checked={form.services.includes("costumes")}
+                      onChange={handleCheckboxChange}
+                    />
+                    Costumes
+                  </label>
+
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      name="services"
+                      value="drummers"
+                      checked={form.services.includes("drummers")}
+                      onChange={handleCheckboxChange}
+                    />
+                    Drummers
+                  </label>
+                </div>
+              </div>
 
               {/* location */}
               <div>
@@ -165,29 +223,22 @@ export function HireDancers() {
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label
-                    htmlFor="dancers"
-                    className="text-sm font-medium text-black/70"
-                  >
-                    Number of dancers
+                  <label className="text-sm font-medium text-black/70">
+                    Quantity / performers
                   </label>
 
                   <select
-                    id="dancers"
-                    name="dancers"
-                    value={form.dancers}
+                    name="quantity"
+                    value={form.quantity}
                     onChange={handleChange}
                     className="input-field select-field"
-                    required
                   >
-                    <option value="" disabled>
-                      Select number
-                    </option>
-                    <option value="1">1 dancer</option>
-                    <option value="2">2 dancers</option>
-                    <option value="3">3 dancers</option>
-                    <option value="4">4 dancers</option>
-                    <option value="5+">5+ dancers</option>
+                    <option value="">Select quantity</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5+">5+</option>
                   </select>
                 </div>
               </div>
@@ -199,7 +250,7 @@ export function HireDancers() {
                   name="message"
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Message / Requirements"
+                  placeholder="Tell us more (event type, costumes needed, performance duration, etc.)"
                   rows={4}
                   className="input-field w-full resize-y"
                 />
@@ -216,7 +267,7 @@ export function HireDancers() {
                 </button>
 
                 <a
-                  href={`https://wa.me/18608213853?text=Hi!%20I%27m%20looking%20to%20hire%20dancers`}
+                  href={`https://wa.me/18608213853?text=Hi!%20I%27m%20interested%20in%20booking%20performers%20or%20costumes`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost inline-flex items-center justify-center px-4 py-2 rounded-lg border text-sm"
