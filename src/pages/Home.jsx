@@ -74,7 +74,7 @@ const Home = () => {
           <a href="#hire-dancers" className="about-btn-primary">
             Book Us for a Show
           </a>
-          <a href="#book-dance-class" className="about-btn-outline">
+          <a href="#book-a-class" className="about-btn-outline">
             Join a Dance Class
           </a>
         </div>
