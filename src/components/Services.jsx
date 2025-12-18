@@ -58,52 +58,51 @@ export default function Services() {
       title: "Event Dancers",
       text: "Versatile performers for product launches, festivals and live brand events.",
       cta: "Hire Dancers",
-      href: "/hire-dancers",
+      href: "#hire-dancers",
     },
     {
       img: imgNightlife,
       title: "Club & Nightlife Shows",
       text: "High-energy specialty acts and production-ready performers for nightlife venues.",
       cta: "Hire Dancers",
-      href: "/hire-dancers",
+      href: "#hire-dancers",
     },
     {
       img: imgWeddings,
       title: "Weddings & Corporate",
       text: "Polished choreography and bespoke entertainment for premium ceremonies and corporate evenings.",
       cta: "Hire Dancers",
-      href: "/hire-dancers",
+      href: "#hire-dancers",
     },
     {
       img: imgDrummers,
       title: "African Drummers",
       text: "Authentic African drumming performances bringing rhythm, energy and cultural flair to any event.",
       cta: "Hire Drummers",
-      href: "/hire-drummers",
+      href: "#hire-drummers",
     },
   ];
-
   const academy = [
     {
       img: imgGroup,
       title: "Group Classes",
       text: "Weekly technique and choreography sessions across contemporary, hip-hop and more.",
       cta: "Book a Class",
-      href: "/book-a-class",
+      href: "#book-a-class",
     },
     {
       img: imgPrivate,
       title: "Private Coaching",
       text: "One-on-one coaching tailored to goals — technique, performance polish and audition prep.",
       cta: "Book a Class",
-      href: "/book-a-class",
+      href: "#book-a-class",
     },
     {
       img: imgKids,
       title: "Kids & Teens Programs",
       text: "Structured, safe and fun training for young dancers at every level.",
       cta: "Book a Class",
-      href: "/book-a-class",
+      href: "#book-a-class",
     },
   ];
 
@@ -140,7 +139,7 @@ export default function Services() {
         </div>
 
         <div className="section-cta text-center mt-8">
-          <a href="/academy" className="btn-primaryy large">
+          <a href="/services" className="btn-primaryy large">
             Learn More
           </a>
         </div>
@@ -173,7 +172,7 @@ export default function Services() {
         </div>
 
         <div className="section-cta text-center mt-8">
-          <a href="/academy" className="btn-primaryy large">
+          <a href="/services" className="btn-primaryy large">
             Learn More
           </a>
         </div>

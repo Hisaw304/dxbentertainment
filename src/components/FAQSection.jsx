@@ -3,8 +3,8 @@ import { MessageCircle } from "lucide-react";
 
 const INITIAL_VISIBLE = 6;
 
-const WA_NUMBER = "18608213853"; // keep your number (used earlier). Change if needed.
-const EMAIL = "info@dxbentertainment.com";
+const WA_NUMBER = "971558758934"; // keep your number (used earlier). Change if needed.
+const EMAIL = "info@dxbstarsent.com";
 
 const FAQ_ITEMS = [
   {

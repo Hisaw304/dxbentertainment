@@ -73,7 +73,7 @@ const DanceClasses = () => {
             <div className="dance-card-overlay">
               <h3>{label}</h3>
               <p>{description}</p>
-              <button>Book Now</button>
+              <a href="#book-a-class">Book Now</a>
             </div>
             {/* Static label at bottom */}
             <div className="dance-card-label">

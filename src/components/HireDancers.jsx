@@ -2,12 +2,12 @@
 // File: src/components/HireDancers.jsx
 // ------------------------------
 import React, { useState } from "react";
-import showVideo from "../assets/herod.mp4";
-// const showVideo = {
-//   src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_fmubvc.mp4",
-//   poster:
-//     "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_fmubvc.jpg",
-// };
+// import showVideo from "../assets/herod.mp4";
+const showVideo = {
+  src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/eko_dancers_gogo_vpnosv.mp4",
+  poster:
+    "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/eko_dancers_gogo_vpnosv.jpg",
+};
 export function HireDancers() {
   const [form, setForm] = useState({
     clientName: "",
@@ -95,7 +95,8 @@ export function HireDancers() {
         <div className="media-wrap rounded-xl overflow-hidden shadow-lg flex items-stretch">
           <div className="w-full">
             <video
-              src={showVideo}
+              src={showVideo.src}
+              poster={showVideo.poster}
               autoPlay
               muted
               loop
@@ -271,7 +272,7 @@ export function HireDancers() {
                 </button>
 
                 <a
-                  href={`https://wa.me/18608213853?text=Hi!%20I%27m%20interested%20in%20booking%20performers%20or%20costumes`}
+                  href={`https://wa.me/971558758934?text=Hi!%20I%27m%20interested%20in%20booking%20performers%20or%20costumes`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost inline-flex items-center justify-center px-4 py-2 rounded-lg border text-sm"

@@ -3,10 +3,21 @@ import React from "react";
 import HireDancers from "../components/HireDancers";
 import BookAClass from "../components/BookAClass";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import contactHero from "../assets/contact-hero.jpg";
 import { MapPin, Phone, Mail, Instagram, Facebook, Music } from "lucide-react";
 import WhatsApp from "../components/Whatsapp";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const Contact = () => {
   return (
@@ -59,9 +70,7 @@ const Contact = () => {
             <div className="contact-divider" />
 
             <Mail className="contact-icon small" />
-            <a href="mailto:info@dxbentertainment.com">
-              info@dxbentertainment.com
-            </a>
+            <a href="mailto:info@dxbstarsent.com">info@dxbstarsent.com</a>
           </div>
 
           {/* SOCIALS */}

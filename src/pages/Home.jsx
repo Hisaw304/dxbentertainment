@@ -65,16 +65,16 @@ const Home = () => {
       {/* CTA */}
       <section className="about-cta">
         <h1>Interested in Working With Us?</h1>
-        <p>
+        <p className="about-cta-sub">
           Whether you’re looking to book professional dancers or join our dance
           classes, DXB STARS makes the process simple.
         </p>
 
         <div className="about-cta-buttons">
-          <a href="/contact" className="about-btn-primary">
+          <a href="#hire-dancers" className="about-btn-primary">
             Book Us for a Show
           </a>
-          <a href="/dance-classes" className="about-btn-outline">
+          <a href="#book-dance-class" className="about-btn-outline">
             Join a Dance Class
           </a>
         </div>

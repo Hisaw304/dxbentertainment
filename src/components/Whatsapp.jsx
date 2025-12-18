@@ -1,6 +1,6 @@
 // components/WhatsAppFloat.jsx
 
-export default function WhatsApp({ whatsapp = "18608213853" }) {
+export default function WhatsApp({ whatsapp = "971558758934" }) {
   return (
     <a
       href={`https://wa.me/${whatsapp}?text=Hi!%20I'm%20interested%20in%20your%20services`}

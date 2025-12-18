@@ -1,7 +1,11 @@
 // src/components/BookAClass.jsx
 import React, { useState, useMemo } from "react";
-import heroVideo from "../assets/herodc.mp4";
-
+// import heroVideo from "../assets/herodc.mp4";
+const showVideo = {
+  src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_cl8qhu.mp4",
+  poster:
+    "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_cl8qhu.jpg",
+};
 export function BookAClass() {
   /* ---------------- INITIAL STATE ---------------- */
   const INITIAL_FORM = {
@@ -170,7 +174,6 @@ export function BookAClass() {
         throw new Error("No checkout URL returned");
       }
 
-      // 🔥 REDIRECT TO STRIPE
       window.location.href = data.url;
     } catch (err) {
       console.error(err);
@@ -195,8 +198,17 @@ export function BookAClass() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
         <div className="media-wrap rounded-xl overflow-hidden shadow-lg flex items-stretch">
           <div className="w-full">
+            {/* <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              playsInline
+              preload="metadata"
+            /> */}
             <video
-              src={heroVideo}
+              src={showVideo.src}
+              poster={showVideo.poster}
               autoPlay
               muted
               loop
@@ -389,16 +401,26 @@ export function BookAClass() {
                   </p>
                 </div>
               )}
+              <div className="flex flex-col sm:flex-row gap-3 items-center">
+                <button
+                  type="submit"
+                  disabled={!isFormValid}
+                  className={`btn btn-gradient w-full py-3 rounded-xl font-semibold ${
+                    !isFormValid ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  Continue
+                </button>
 
-              <button
-                type="submit"
-                disabled={!isFormValid}
-                className={`btn btn-gradient w-full py-3 rounded-xl font-semibold ${
-                  !isFormValid ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                Continue
-              </button>
+                <a
+                  href={`https://wa.me/971558758934?text=Hi!%20I%27m%20interested%20in%20booking%20performers%20or%20costumes`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost inline-flex items-center justify-center px-4 py-2 rounded-lg border text-sm"
+                >
+                  Quick enquiry (WhatsApp)
+                </a>
+              </div>
             </form>
           </div>
 

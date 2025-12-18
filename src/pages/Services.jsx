@@ -131,7 +131,7 @@ export default function ServicesPage() {
         {/* CTA */}
         <section className="about-cta">
           <h2>Interested in Working With Us?</h2>
-          <p>
+          <p className="about-cta-sub">
             Whether you’re looking to book professional dancers or join our
             dance classes, DXB STARS makes the process simple.
           </p>
@@ -140,7 +140,7 @@ export default function ServicesPage() {
             <a href="/contact" className="about-btn-primary">
               Book Us for a Show
             </a>
-            <a href="/dance-classes" className="about-btn-outline">
+            <a href="/contact" className="about-btn-outline">
               Join a Dance Class
             </a>
           </div>

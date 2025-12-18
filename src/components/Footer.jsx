@@ -78,7 +78,7 @@ export function Footer({ logoPath = "/logo.png" }) {
               </svg>
             </a>
 
-            <a
+            {/* <a
               href="#"
               aria-label="Facebook"
               className="p-2 rounded-full bg-white shadow-sm hover:scale-105 transition-transform inline-flex items-center justify-center"
@@ -155,7 +155,7 @@ export function Footer({ logoPath = "/logo.png" }) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -257,7 +257,7 @@ export function Footer({ logoPath = "/logo.png" }) {
             rights reserved.
           </div>
           <div className="mt-3 md:mt-0">
-            Designed for Dubai • Available worldwide
+            Developed by FreshMind Web • Available worldwide
           </div>
         </div>
       </div>

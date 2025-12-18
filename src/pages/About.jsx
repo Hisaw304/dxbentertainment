@@ -1,13 +1,27 @@
 // src/pages/AboutPage.jsx
 import React from "react";
-
+import { useEffect, useState } from "react";
 import imgAboutHero from "../assets/about-herosec.jpg";
 import imgTeam from "../assets/team.jpg";
 import imgTeam2 from "../assets/aboutinfo.jpg";
 import WhatsApp from "../components/Whatsapp";
 import PortfolioVideos from "../components/PortfolioVideos";
+import img2 from "../assets/group-classes1.jpg";
+import img3 from "../assets/hero1.png";
+import img4 from "../assets/club-dancers.jpg";
+import img5 from "../assets/afro.jpg";
 
+const images = [imgTeam2, img2, img3, img4, img5];
 export default function About() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000); //
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <main className="about-page">
       {/* HERO */}
@@ -54,7 +68,12 @@ export default function About() {
           </div>
 
           <div className="about-preview-image">
-            <img src={imgTeam2} alt="DXB Stars Team" />
+            <img
+              key={images[index]}
+              src={images[index]}
+              alt="DXB Stars Team"
+              className="fade-image"
+            />
           </div>
         </div>
       </section>
@@ -171,7 +190,7 @@ export default function About() {
         {/* CTA */}
         <section className="about-cta">
           <h2>Interested in Working With Us?</h2>
-          <p>
+          <p className="about-cta-sub">
             Whether you’re looking to book professional dancers or join our
             dance classes, DXB STARS makes the process simple.
           </p>
@@ -180,7 +199,7 @@ export default function About() {
             <a href="/contact" className="about-btn-primary">
               Book Us for a Show
             </a>
-            <a href="/dance-classes" className="about-btn-outline">
+            <a href="/contact" className="about-btn-outline">
               Join a Dance Class
             </a>
           </div>

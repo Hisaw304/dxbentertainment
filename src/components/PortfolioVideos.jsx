@@ -71,15 +71,17 @@ const VIDEOS = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
+// const containerVariants = {
+//   hidden: {},
+//   visible: { transition: { staggerChildren: 0.1 } },
+// };
 
-const cardVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
-};
+// const cardVariants = {
+//   hidden: { opacity: 0 },
+//   visible: { opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
+// };
+const containerVariants = {};
+const cardVariants = {};
 
 const PortfolioVideos = () => {
   return (
