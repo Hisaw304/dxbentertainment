@@ -11,14 +11,21 @@ import img5 from "../assets/afro.jpg";
 const images = [imgTeam2, img2, img3, img4, img5];
 export default function AboutUs() {
   const [index, setIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 4000); //
+      setIsFading(true);
+
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % images.length);
+        setIsFading(false);
+      }, 300); // half of fade duration
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
+
   return (
     <section className="about-preview">
       {/* Heading */}
@@ -36,13 +43,12 @@ export default function AboutUs() {
       <div className="about-preview-grid">
         <div className="about-preview-image">
           <img
-            key={images[index]}
             src={images[index]}
             alt="DXB Stars Team"
-            className="fade-image"
+            className={`fade-image ${isFading ? "fade-out" : ""}`}
           />
         </div>
-        <div className="about-preview-text">
+        <div className="about-preview-textt">
           <p>
             DXB STARS is a Dubai-based collective of professional dancers,
             choreographers, and coaches operating at the intersection of

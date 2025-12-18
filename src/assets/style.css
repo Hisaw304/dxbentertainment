@@ -1758,16 +1758,15 @@ Contact form for dance and class
   }
 }
 .fade-image {
-  animation: fadeIn 0.6s ease-in-out;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
+.fade-image.fade-out {
+  opacity: 0.4; /* 👈 NOT 0 */
 }
 
 /* Mobile */
@@ -1916,6 +1915,9 @@ Contact form for dance and class
 /* =========================
    ABOUT COMPONENT
 ========================= */
+.about-pr {
+  background: var(--dxb-pink);
+}
 .about-preview {
   max-width: 1200px;
   margin: 0 auto;
@@ -1925,6 +1927,12 @@ Contact form for dance and class
 /* Heading */
 .about-preview-heading {
   color: var(--dxb-pink);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 3rem;
+}
+.about-preview-headingg {
+  color: var(--dxb-white);
   font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 800;
   margin-bottom: 3rem;
@@ -1939,6 +1947,11 @@ Contact form for dance and class
 }
 
 /* Text */
+.about-preview-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: var(--dxb-white);
+}
 .about-preview-text p {
   margin-bottom: 1.5rem;
   line-height: 1.7;
@@ -1966,6 +1979,7 @@ Contact form for dance and class
 .about-preview-image {
   width: 100%;
   max-width: 460px;
+  /* height: 460px; */
   border-radius: var(--svc-radius);
   box-shadow: var(--svc-shadow);
   overflow: hidden;
