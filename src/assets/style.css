@@ -6,7 +6,10 @@
   --svc-radius: 18px;
   --svc-shadow: 0 14px 40px rgba(10, 10, 12, 0.08);
 }
-
+html,
+body {
+  overflow-x: hidden;
+}
 .nav-backdrop {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: saturate(120%) blur(6px);
