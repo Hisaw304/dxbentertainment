@@ -7,7 +7,7 @@ import zumbaImg from "../assets/zumba.jpg";
 import amapianoImg from "../assets/amapiano.jpg";
 import heelsImg from "../assets/afro-sexy.jpg";
 import contemporaryImg from "../assets/contemporary.jpg";
-import sambaImg from "../assets/samba.jpg";
+import sambaImg from "../assets/weddings1.jpg";
 
 const DANCE_STYLES = [
   {

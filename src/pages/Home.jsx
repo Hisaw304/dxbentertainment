@@ -11,6 +11,7 @@ import AboutUs from "../components/AboutUs.jsx";
 import HowItWorks from "../components/HowItWorks.jsx";
 import DanceClasses from "../components/DanceClasses.jsx";
 import PortfolioVideos from "../components/PortfolioVideos.jsx";
+import SEOMeta from "../components/SEOMeta.jsx";
 
 const Home = () => {
   const [paymentStatus, setPaymentStatus] = useState(null);
@@ -35,6 +36,10 @@ const Home = () => {
 
   return (
     <div>
+      <SEOMeta
+        title="Dance Classes Dubai & Event Shows | DXB Entertainment"
+        description="Professional dance classes and premium dance shows in Dubai. Book group classes, private lessons, or hire dancers for events."
+      />
       {/* 🔔 PAYMENT MESSAGE */}
       {paymentStatus === "success" && (
         <div className="payment-banner success">

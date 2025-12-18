@@ -13,6 +13,7 @@ import Services from "../components/Services";
 import imgServicesHero from "../assets/services-hero.jpg";
 import WhatsApp from "../components/Whatsapp";
 import DanceClasses from "../components/DanceClasses";
+import SEOMeta from "../components/SEOMeta";
 
 const ServiceFeature = ({ title, text, img, cta, reverse }) => {
   return (
@@ -38,6 +39,10 @@ const ServiceFeature = ({ title, text, img, cta, reverse }) => {
 export default function ServicesPage() {
   return (
     <main className="services-page">
+      <SEOMeta
+        title="Dance Classes & Event Entertainment in Dubai | DXB Entertainment"
+        description="Explore dance classes, private training, and professional dancers for weddings, corporate events, parties, and shows in Dubai."
+      />
       {/* HERO */}
       <section
         className="svc-hero"

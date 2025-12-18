@@ -11,6 +11,7 @@ import WhatsApp from "../components/Whatsapp";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import SEOMeta from "../components/SEOMeta";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -22,6 +23,10 @@ L.Icon.Default.mergeOptions({
 const Contact = () => {
   return (
     <main className="contact-page">
+      <SEOMeta
+        title="Book Dance Classes or Hire Dancers in Dubai | DXB Entertainment"
+        description="Contact DXB Entertainment to book dance classes or hire professional dancers in Dubai. Fast response and tailored entertainment"
+      />
       {/* ================= HERO ================= */}
       <section
         className="contact-hero"
