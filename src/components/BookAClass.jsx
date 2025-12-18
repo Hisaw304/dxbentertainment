@@ -1,5 +1,5 @@
 // src/components/BookAClass.jsx
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 // import heroVideo from "../assets/herodc.mp4";
 const showVideo = {
   src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_cl8qhu.mp4",
@@ -153,7 +153,23 @@ export function BookAClass() {
 
     setShowConfirm(true);
   }
+  useEffect(() => {
+    if (showConfirm) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
 
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [showConfirm]);
   /* ---------------- FINAL SUBMIT ---------------- */
   async function handleSubmit() {
     setLoading(true);

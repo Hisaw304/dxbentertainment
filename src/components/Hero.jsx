@@ -185,7 +185,7 @@ export default function Hero({
               <span className="hero-meta-label">Follow us</span>
 
               <a
-                href="#"
+                href="https://www.instagram.com/dxb.stars_eko_entertainment?igsh=dDAyZGwyanNjaDVl"
                 className="hero-social"
                 aria-label="Follow DXB STARS on Instagram"
               >
@@ -193,14 +193,14 @@ export default function Hero({
                 <span>Instagram</span>
               </a>
 
-              <a
+              {/* <a
                 href="#"
                 className="hero-social"
                 aria-label="Follow DXB STARS on TikTok"
               >
                 <Music2 size={18} />
                 <span>TikTok</span>
-              </a>
+              </a> */}
             </div>
 
             <span className="hero-meta-separator" />

@@ -41,7 +41,7 @@ export function Footer({ logoPath = "/logo.png" }) {
           <div className="flex items-center gap-3 mt-2">
             {/* Social icons in white circles (SVG stroke uses currentColor) */}
             <a
-              href="#"
+              href="https://www.instagram.com/dxb.stars_eko_entertainment?igsh=dDAyZGwyanNjaDVl"
               aria-label="Instagram"
               className="p-2 rounded-full bg-white shadow-sm hover:scale-105 transition-transform inline-flex items-center justify-center"
             >
