@@ -1,24 +1,20 @@
-// import { Helmet } from "react-helmet-async";
+// components/SEOMeta.jsx
+import { useEffect } from "react";
 
-// const SEOMeta = ({ title, description }) => {
-//   return (
-//     <Helmet>
-//       {/* TITLE */}
-//       <title>{title}</title>
+export default function SEOMeta({ title, description }) {
+  useEffect(() => {
+    if (title) document.title = title;
 
-//       {/* META DESCRIPTION */}
-//       <meta name="description" content={description} />
+    if (description) {
+      let meta = document.querySelector("meta[name='description']");
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.name = "description";
+        document.head.appendChild(meta);
+      }
+      meta.content = description;
+    }
+  }, [title, description]);
 
-//       {/* OPEN GRAPH */}
-//       <meta property="og:title" content={title} />
-//       <meta property="og:description" content={description} />
-//       <meta property="og:type" content="website" />
-
-//       {/* TWITTER */}
-//       <meta name="twitter:title" content={title} />
-//       <meta name="twitter:description" content={description} />
-//     </Helmet>
-//   );
-// };
-
-// export default SEOMeta;
+  return null;
+}

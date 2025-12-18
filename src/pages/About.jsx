@@ -10,7 +10,7 @@ import img2 from "../assets/group-classes1.jpg";
 import img3 from "../assets/hero1.png";
 import img4 from "../assets/club-dancers.jpg";
 import img5 from "../assets/afro.jpg";
-// import SEOMeta from "../components/SEOMeta";
+import SEOMeta from "../components/SEOMeta";
 
 const images = [imgTeam2, img2, img3, img4, img5];
 export default function About() {
@@ -31,10 +31,10 @@ export default function About() {
   }, []);
   return (
     <main className="about-page">
-      {/* <SEOMeta
+      <SEOMeta
         title="Professional Dance Studio in Dubai | DXB Entertainment"
         description="DXB Entertainment is a leading dance studio in Dubai offering expert instructors, premium classes, and professional event performances."
-      /> */}
+      />
       {/* HERO */}
       <section
         className="about-hero"
