@@ -70,7 +70,7 @@ const Contact = () => {
             <div className="contact-divider" />
 
             <Mail className="contact-icon small" />
-            <a href="mailto:info@dxbstarsent.com">info@dxbstarsent.com</a>
+            <a href="mailto:info@dxbstarsetm.com">info@dxbstarsetm.com</a>
           </div>
 
           {/* SOCIALS */}

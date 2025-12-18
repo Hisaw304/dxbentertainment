@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 const INITIAL_VISIBLE = 6;
 
 const WA_NUMBER = "971558758934"; // keep your number (used earlier). Change if needed.
-const EMAIL = "info@dxbstarsent.com";
+const EMAIL = "info@dxbstarsetm.com";
 
 const FAQ_ITEMS = [
   {
@@ -47,7 +47,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "How long is each dance class and how do I book?",
-    a: "Most classes are 60–90 minutes. You can book via our Book a Class page or email/WhatsApp us with your preferred time and class type.",
+    a: "Most classes are 60–90 minutes. You can book via our Contact page or email/WhatsApp us with your preferred time and class type.",
   },
   {
     q: "Can I reschedule or cancel a class?",
@@ -61,11 +61,11 @@ const FAQ_ITEMS = [
   // General
   {
     q: "What payment methods do you accept?",
-    a: "We accept card payments, bank transfers and cash payment at the studio. For events we can issue invoices — please request payment terms in advance.",
+    a: "We accept card payments through Stripe, safe and secure. For events we can issue invoices — please request payment terms in advance.",
   },
   {
     q: "Can I contact you on WhatsApp for quick bookings?",
-    a: "Yes — use the WhatsApp button in the support box. Provide the event date, location, and a short brief and we'll respond quickly to confirm availability.",
+    a: "Yes — use the WhatsApp button on the page. Provide the event date, location, and a short brief and we'll respond quickly to confirm availability.",
   },
 ];
 

@@ -107,7 +107,7 @@ export default function About() {
       </section>
 
       {/* MISSION */}
-      <section className="about-section">
+      {/* <section className="about-section">
         <h2 className="about-preview-heading text-center">Our Mission</h2>
         <p>
           Our mission is to deliver exceptional dance experiences that combine
@@ -115,10 +115,10 @@ export default function About() {
           standard of live performance in Dubai by providing reliable,
           disciplined, and visually striking talent for every type of event.
         </p>
-      </section>
+      </section> */}
 
       {/* WHAT WE OFFER */}
-      <section className="about-section">
+      {/* <section className="about-section">
         <h2 className="about-preview-heading text-center">What We Offer</h2>
 
         <p>
@@ -157,23 +157,23 @@ export default function About() {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* WHERE WE OPERATE */}
-      <section className="about-section">
+      {/* <section className="about-section">
         <h2 className="about-preview-heading text-center">Where We Perform</h2>
         <p>
           Based in Dubai Marina, DXB STARS performs across all areas of Dubai
           and the UAE. We are also available for regional and international
           bookings, bringing Dubai-level performance standards wherever we go.
         </p>
-      </section>
+      </section> */}
 
       {/* TEAM */}
-      <section className="about-section about-team">
+      {/* <section className="about-section about-team">
         <h2 className="about-preview-heading text-center">Our Team</h2>
 
         <div className="about-team-content">
-          {/* LEFT: TEXT */}
+          
           <div className="about-team-text">
             <p>
               Our team is made up of carefully selected professional dancers,
@@ -186,15 +186,15 @@ export default function About() {
             </p>
           </div>
 
-          {/* RIGHT: IMAGE */}
+   
           <div className="about-team-image">
             <img src={imgTeam} alt="DXB Stars Team" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div>
-        <PortfolioVideos />
+        {/* <PortfolioVideos /> */}
         {/* CTA */}
         <section className="about-cta">
           <h2>Interested in Working With Us?</h2>

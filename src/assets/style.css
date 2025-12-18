@@ -1979,7 +1979,7 @@ Contact form for dance and class
 .about-preview-image {
   width: 100%;
   max-width: 460px;
-  /* height: 460px; */
+  height: 460px;
   border-radius: var(--svc-radius);
   box-shadow: var(--svc-shadow);
   overflow: hidden;

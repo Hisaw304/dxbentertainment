@@ -52,7 +52,7 @@ export default function ServicesPage() {
       </section>
 
       {/* PERFORMANCE SERVICES */}
-      <ServiceFeature
+      {/* <ServiceFeature
         title="Music Video Vixens"
         img={imgVixen}
         cta="Hire Dancers"
@@ -105,10 +105,10 @@ export default function ServicesPage() {
         reverse
         text="Live African drumming that brings rhythm, power, and energy to any
         event. A full sensory experience that connects culture and celebration."
-      />
+      /> */}
 
       {/* ACADEMY SERVICES */}
-      <ServiceFeature
+      {/* <ServiceFeature
         title="Private Dance Classes"
         img={imgPrivate}
         cta="Book Private Class"
@@ -123,10 +123,10 @@ export default function ServicesPage() {
         reverse
         text="Fun, energetic group dance classes in a supportive environment.
         Learn technique, choreography, and performance skills across styles."
-      />
+      /> */}
       <div>
-        <DanceClasses />
-        <Services />
+        {/* <DanceClasses />
+        <Services /> */}
         <WhatsApp />
         {/* CTA */}
         <section className="about-cta">
