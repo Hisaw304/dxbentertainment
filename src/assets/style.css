@@ -1244,8 +1244,10 @@ Contact form for dance and class
 /* navigation arrows (simple style) */
 .swiper-button-next,
 .swiper-button-prev {
-  width: 24px;
-  height: 24px;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
   border-radius: 999px;
   background: var(--dxb-pink);
   display: flex;
