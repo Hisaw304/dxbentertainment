@@ -2575,7 +2575,7 @@ Contact form for dance and class
 .rw-card {
   flex: 0 0 auto;
   width: 280px;
-  height: 180px;
+  height: 250px;
   border-radius: var(--svc-radius);
   overflow: hidden;
   box-shadow: var(--svc-shadow);
@@ -2612,20 +2612,20 @@ Contact form for dance and class
 @media (max-width: 1024px) {
   .rw-card {
     width: 240px;
-    height: 160px;
+    height: 250px;
   }
 }
 
 @media (max-width: 768px) {
   .rw-card {
     width: 200px;
-    height: 140px;
+    height: 250px;
   }
 }
 
 @media (max-width: 480px) {
   .rw-card {
     width: 85vw;
-    height: 200px;
+    height: 250px;
   }
 }
