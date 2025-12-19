@@ -12,6 +12,7 @@ import HowItWorks from "../components/HowItWorks.jsx";
 import DanceClasses from "../components/DanceClasses.jsx";
 import PortfolioVideos from "../components/PortfolioVideos.jsx";
 import SEOMeta from "../components/SEOMeta.jsx";
+import RecentWork from "../components/RecentWork.jsx";
 
 const Home = () => {
   const [paymentStatus, setPaymentStatus] = useState(null);
@@ -64,6 +65,7 @@ const Home = () => {
       <Services />
       <DanceClasses />
       <PortfolioVideos />
+      <RecentWork />
       <FAQ />
       <Testimonials />
       <WhatsApp />

@@ -2520,3 +2520,111 @@ Contact form for dance and class
     padding: 3rem 1rem 5rem;
   }
 }
+/* ============================= */
+/* Recent work jsx */
+/* ============================= */
+.recent-work {
+  background: var(--dxb-pink);
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.rw-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.rw-header h2 {
+  color: var(--dxb-white);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.rw-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ROWS */
+.rw-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.rw-row {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll linear infinite;
+}
+
+.rw-row.left {
+  animation-name: scroll-left;
+}
+
+.rw-row.right {
+  animation-name: scroll-right;
+}
+
+/* CARD */
+.rw-card {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 180px;
+  border-radius: var(--svc-radius);
+  overflow: hidden;
+  box-shadow: var(--svc-shadow);
+  background: var(--dxb-black);
+}
+
+.rw-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ANIMATIONS */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .rw-card {
+    width: 240px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .rw-card {
+    width: 200px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rw-card {
+    width: 85vw;
+    height: 200px;
+  }
+}
