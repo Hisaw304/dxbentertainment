@@ -2586,6 +2586,7 @@ Contact form for dance and class
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top 50%;
 }
 
 /* ANIMATIONS */
