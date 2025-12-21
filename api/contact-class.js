@@ -17,13 +17,13 @@ export default async function handler(req, res) {
 
     form.parse(req, async (err, fields, files) => {
       if (err) {
-        console.error("Form parse error:", err);
+        console.error(err);
         return res.status(400).json({ error: "Invalid form data" });
       }
 
       const {
-        name,
-        email,
+        name: studentName,
+        email: studentEmail,
         phone,
         danceStyle,
         classType,
@@ -35,23 +35,41 @@ export default async function handler(req, res) {
         price,
       } = fields;
 
-      /* ---------- BASIC VALIDATION ---------- */
-      if (!name || !email || !phone || !danceStyle || !classType || !price) {
+      /* ---------- VALIDATION ---------- */
+      if (
+        !studentName ||
+        !studentEmail ||
+        !phone ||
+        !danceStyle ||
+        !classType ||
+        !price
+      ) {
         return res.status(400).json({ error: "Missing required fields" });
+      }
+
+      if (classType === "Group" && !groupDay) {
+        return res.status(400).json({ error: "Missing group schedule" });
+      }
+
+      if (
+        classType === "Private" &&
+        (!privatePackage || !preferredDay || !preferredTime)
+      ) {
+        return res.status(400).json({ error: "Missing private class details" });
       }
 
       /* ---------- EMAIL TRANSPORT ---------- */
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
-        secure: true,
+        secure: process.env.SMTP_PORT === "465",
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
         },
       });
 
-      /* ---------- RECEIPT ATTACHMENT ---------- */
+      /* ---------- RECEIPT ---------- */
       let attachments = [];
 
       if (files?.receipt?.filepath) {
@@ -61,112 +79,39 @@ export default async function handler(req, res) {
         });
       }
 
-      /* ---------- CLIENT EMAIL ---------- */
-      const clientMail = {
-        from: `"DXB Dance Studio" <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: "Your Dance Class Booking — DXB Dance Studio",
-        html: clientEmailTemplate({
-          name,
-          danceStyle,
-          classType,
-          groupDay,
-          privatePackage,
-          preferredDay,
-          preferredTime,
-          location,
-          price,
-        }),
-      };
-
-      /* ---------- STUDIO EMAIL ---------- */
-      const studioMail = {
-        from: `"New Dance Booking" <${process.env.SMTP_USER}>`,
-        to: process.env.SMTP_USER,
-        subject: "New Dance Class Booking (Payment Receipt Attached)",
-        html: studioEmailTemplate({
-          name,
-          email,
-          phone,
-          danceStyle,
-          classType,
-          groupDay,
-          privatePackage,
-          preferredDay,
-          preferredTime,
-          location,
-          price,
-        }),
+      /* ---------- SEND EMAILS ---------- */
+      await sendEmails({
+        transporter,
+        studentEmail,
+        studentName,
+        phone,
+        danceStyle,
+        classType,
+        groupDay,
+        privatePackage,
+        preferredDay,
+        preferredTime,
+        location,
+        amount: price,
         attachments,
-      };
-
-      await transporter.sendMail(clientMail);
-      await transporter.sendMail(studioMail);
+      });
 
       return res.status(200).json({ success: true });
     });
   } catch (err) {
-    console.error("Contact class error:", err);
+    console.error(err);
     return res.status(500).json({ error: "Email sending failed" });
   }
 }
-function clientEmailTemplate({
-  name,
-  danceStyle,
-  classType,
-  groupDay,
-  privatePackage,
-  preferredDay,
-  preferredTime,
-  location,
-  price,
-}) {
-  return `
-    <div style="font-family: Arial, sans-serif; background:#ffffff; padding:24px; color:#000;">
-      <h2 style="color:#ff2d84;">Hi ${name},</h2>
 
-      <p>Thank you for booking a dance class with <strong>DXB Dance Studio</strong>.</p>
+/* ===================================================== */
+/* ================= EMAIL TEMPLATE ==================== */
+/* ===================================================== */
 
-      <p>We’ve received your booking request and payment receipt with the following details:</p>
-
-      <ul style="line-height:1.6;">
-        <li><strong>Dance Style:</strong> ${danceStyle}</li>
-        <li><strong>Class Type:</strong> ${classType}</li>
-      ${
-        classType === "Group" && groupDay
-          ? `<li><strong>Day & Time:</strong> ${groupDay}</li>`
-          : ""
-      }
-
-${
-  classType === "Private"
-    ? `
-    <li><strong>Package:</strong> ${privatePackage}</li>
-    <li><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</li>
-  `
-    : ""
-}
-
-        <li><strong>Location:</strong> ${location}</li>
-        <li><strong>Total Price:</strong> ${price}</li>
-      </ul>
-
-      <p>
-        Our team will review your payment and contact you shortly to confirm
-        your booking.
-      </p>
-
-      <p style="margin-top:24px;">
-        💃🖤<br/>
-        <strong>DXB Dance Studio</strong><br/>
-        Dubai
-      </p>
-    </div>
-  `;
-}
-function studioEmailTemplate({
-  name,
-  email,
+async function sendEmails({
+  transporter,
+  studentEmail,
+  studentName,
   phone,
   danceStyle,
   classType,
@@ -175,38 +120,80 @@ function studioEmailTemplate({
   preferredDay,
   preferredTime,
   location,
-  price,
+  amount,
+  attachments,
 }) {
-  return `
-    <div style="font-family: Arial, sans-serif; background:#ffffff; padding:24px; color:#000;">
-      <h2 style="color:#ff2d84;">New Dance Class Booking</h2>
+  /* ---------- STUDENT EMAIL ---------- */
+  const studentMail = {
+    from: `"DXB Entertainment" <${process.env.SMTP_USER}>`,
+    to: studentEmail,
+    subject: "Your Dance Class Booking Confirmation",
+    html: `
+<div style="background:#ffffff;padding:24px;font-family:Arial,Helvetica,sans-serif;color:#000000;">
+  <div style="max-width:600px;margin:0 auto;border-radius:18px;box-shadow:0 14px 40px rgba(10,10,12,0.08);overflow:hidden;">
+    <div style="background:#ff2d84;color:#ffffff;padding:20px 24px;">
+      <h2 style="margin:0;font-size:22px;">Booking Received 💃</h2>
+    </div>
 
-      <ul style="line-height:1.6;">
-        <li><strong>Name:</strong> ${name}</li>
-        <li><strong>Email:</strong> ${email}</li>
-        <li><strong>Phone:</strong> ${phone}</li>
-        <li><strong>Dance Style:</strong> ${danceStyle}</li>
-        <li><strong>Class Type:</strong> ${classType}</li>
-      ${
-        classType === "Group" && groupDay
-          ? `<li><strong>Day & Time:</strong> ${groupDay}</li>`
-          : ""
-      }
+    <div style="padding:24px;">
+      <p>Hi <strong>${studentName}</strong>,</p>
+      <p>Here are your booking details:</p>
+
+      <table width="100%" style="font-size:14px;">
+        <tr><td><strong>Dance Style</strong></td><td align="right">${danceStyle}</td></tr>
+        <tr><td><strong>Class Type</strong></td><td align="right">${classType}</td></tr>
+
+        ${
+          classType === "Group"
+            ? `<tr><td><strong>Schedule</strong></td><td align="right">${groupDay}</td></tr>`
+            : `
+              <tr><td><strong>Package</strong></td><td align="right">${privatePackage}</td></tr>
+              <tr><td><strong>Preferred Time</strong></td><td align="right">${preferredDay} – ${preferredTime}</td></tr>
+              <tr><td><strong>Location</strong></td><td align="right">${location}</td></tr>
+            `
+        }
+
+        <tr>
+          <td style="padding-top:10px;"><strong>Total Paid</strong></td>
+          <td align="right" style="color:#ff2d84;"><strong>${amount}</strong></td>
+        </tr>
+      </table>
+
+      <p style="margin-top:16px;">We’ll confirm your schedule shortly.</p>
+    </div>
+  </div>
+</div>
+`,
+  };
+
+  /* ---------- STUDIO EMAIL ---------- */
+  const studioMail = {
+    from: `"Booking Notification" <${process.env.SMTP_USER}>`,
+    to: process.env.SMTP_USER,
+    subject: "New Class Booking Received",
+    html: `
+<h3>New Booking</h3>
+<p><strong>Name:</strong> ${studentName}</p>
+<p><strong>Email:</strong> ${studentEmail}</p>
+<p><strong>Phone:</strong> ${phone}</p>
+<p><strong>Dance Style:</strong> ${danceStyle}</p>
+<p><strong>Class Type:</strong> ${classType}</p>
 
 ${
-  classType === "Private"
-    ? `
-    <li><strong>Package:</strong> ${privatePackage}</li>
-    <li><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</li>
-  `
-    : ""
+  classType === "Group"
+    ? `<p><strong>Schedule:</strong> ${groupDay}</p>`
+    : `
+      <p><strong>Package:</strong> ${privatePackage}</p>
+      <p><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</p>
+      <p><strong>Location:</strong> ${location}</p>
+    `
 }
 
-        <li><strong>Location:</strong> ${location}</li>
-        <li><strong>Price:</strong> ${price}</li>
-      </ul>
+<p><strong>Total Paid:</strong> ${amount}</p>
+`,
+    attachments,
+  };
 
-      <p><strong>Payment receipt is attached to this email.</strong></p>
-    </div>
-  `;
+  await transporter.sendMail(studentMail);
+  await transporter.sendMail(studioMail);
 }
