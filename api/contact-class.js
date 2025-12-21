@@ -1,12 +1,20 @@
 import nodemailer from "nodemailer";
 import formidable from "formidable";
-import fs from "fs";
+import { v2 as cloudinary } from "cloudinary";
 
+/* ================= CLOUDINARY CONFIG ================= */
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+/* ================= NEXT CONFIG ================= */
 export const config = {
   api: { bodyParser: false },
 };
 
-// ✅ helper to normalize formidable fields
+// normalize formidable values
 const getValue = (v) => (Array.isArray(v) ? v[0] : v);
 
 export default async function handler(req, res) {
@@ -23,7 +31,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Invalid form data" });
       }
 
-      // ✅ NORMALIZE ALL FIELDS
+      /* ---------- FIELDS ---------- */
       const studentName = getValue(fields.name);
       const studentEmail = getValue(fields.email);
       const phone = getValue(fields.phone);
@@ -59,7 +67,22 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Missing private class details" });
       }
 
-      /* ---------- TRANSPORT ---------- */
+      /* ---------- CLOUDINARY UPLOAD ---------- */
+      let receiptUrl = null;
+
+      if (files?.receipt?.filepath) {
+        const upload = await cloudinary.uploader.upload(
+          files.receipt.filepath,
+          {
+            folder: process.env.CLOUDINARY_FOLDER || "payment-receipts",
+            resource_type: "image",
+          }
+        );
+
+        receiptUrl = upload.secure_url;
+      }
+
+      /* ---------- SMTP ---------- */
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
@@ -69,16 +92,6 @@ export default async function handler(req, res) {
           pass: process.env.SMTP_PASS,
         },
       });
-
-      /* ---------- RECEIPT ---------- */
-      const attachments = [];
-
-      if (files?.receipt?.filepath) {
-        attachments.push({
-          filename: files.receipt.originalFilename || "payment-receipt",
-          content: fs.readFileSync(files.receipt.filepath),
-        });
-      }
 
       /* ---------- SEND EMAILS ---------- */
       await sendEmails({
@@ -94,17 +107,16 @@ export default async function handler(req, res) {
         preferredTime,
         location,
         amount,
-        attachments,
+        receiptUrl,
       });
 
       return res.status(200).json({ success: true });
     });
-  } catch (err) {
-    console.error("Server error:", err);
+  } catch (error) {
+    console.error("Server error:", error);
     return res.status(500).json({ error: "Email sending failed" });
   }
 }
-
 /* ===================================================== */
 /* ================= EMAIL SENDER ====================== */
 /* ===================================================== */
@@ -122,9 +134,9 @@ async function sendEmails({
   preferredTime,
   location,
   amount,
-  attachments = [],
+  receiptUrl, // 👈 Cloudinary URL
 }) {
-  /* ---------- STUDENT EMAIL ---------- */
+  /* ---------- STUDENT EMAIL (UNCHANGED) ---------- */
   const studentMail = {
     from: `"DXB Entertainment" <${process.env.SMTP_USER}>`,
     to: studentEmail,
@@ -166,12 +178,11 @@ async function sendEmails({
 `,
   };
 
-  /* ---------- STUDIO EMAIL ---------- */
+  /* ---------- STUDIO EMAIL (SAME DESIGN, LINK INSTEAD OF ATTACHMENT) ---------- */
   const studioMail = {
     from: `"Booking Notification" <${process.env.SMTP_USER}>`,
     to: process.env.SMTP_USER,
     subject: "New Class Booking Received",
-    attachments,
     html: `
 <div style="font-family:Arial;background:#fff;padding:20px;">
   <h2 style="color:#ff2d84;">New Booking</h2>
@@ -199,7 +210,21 @@ async function sendEmails({
     </tr>
   </table>
 
-  <p><strong>Payment receipt attached.</strong></p>
+  ${
+    receiptUrl
+      ? `
+        <p style="margin-top:16px;">
+          <strong>Payment Receipt:</strong><br/>
+          <a href="${receiptUrl}" target="_blank"
+             style="display:inline-block;margin-top:8px;padding:10px 14px;
+                    background:#ff2d84;color:#fff;text-decoration:none;
+                    border-radius:6px;font-size:14px;">
+            View Receipt
+          </a>
+        </p>
+      `
+      : `<p><strong>No receipt uploaded</strong></p>`
+  }
 </div>
 `,
   };

@@ -667,7 +667,7 @@ export function BookAClass() {
                         type="button"
                         className="modal-btn modal-btn-primary"
                         onClick={handleSubmit}
-                        disabled={loading || !receipt}
+                        disabled={loading}
                       >
                         {loading ? "Sending..." : "I Have Paid"}
                       </button>
