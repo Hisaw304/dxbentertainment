@@ -214,8 +214,15 @@ export function BookAClass() {
   //     setLoading(false);
   //   }
   // }
+
   async function handleSubmit() {
-    if (!receipt) return;
+    if (!receipt) {
+      setMessage({
+        type: "error",
+        text: "Please upload your payment receipt.",
+      });
+      return;
+    }
 
     setLoading(true);
     setMessage(null);
@@ -223,9 +230,9 @@ export function BookAClass() {
     try {
       const formData = new FormData();
 
-      // ✅ SEND FORM AS-IS (DO NOT MUTATE)
+      // send all fields exactly as-is
       Object.entries(form).forEach(([key, value]) => {
-        formData.append(key, value);
+        formData.append(key, value || "");
       });
 
       formData.append("price", displayPrice);
@@ -234,10 +241,10 @@ export function BookAClass() {
 
       const res = await fetch("/api/contact-class", {
         method: "POST",
-        body: formData,
+        body: formData, // ✅ NO headers
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) throw new Error();
 
       setShowConfirm(false);
       setForm(INITIAL_FORM);
@@ -245,7 +252,7 @@ export function BookAClass() {
 
       setMessage({
         type: "success",
-        text: "Your request has been sent successfully. We will confirm your booking shortly.",
+        text: "Your booking request has been sent successfully. We’ll confirm your schedule shortly.",
       });
     } catch (err) {
       console.error(err);
