@@ -11,6 +11,14 @@ const VIDEOS = [
       "High-energy Afrobeat rhythms designed to get you moving and grooving.",
   },
   {
+    label: "Dancehall Jamaican Style",
+    src: "https://res.cloudinary.com/dfo4k5eel/video/upload/a2c2784a-4bbe-4378-9a65-3654ee59dad4_zoqruc.mp4",
+    poster:
+      "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/a2c2784a-4bbe-4378-9a65-3654ee59dad4_zoqruc.jpg",
+    description:
+      "Authentic Jamaican dancehall moves full of energy, attitude, and vibrant rhythm.",
+  },
+  {
     label: "Amapiano Dance",
     src: "https://res.cloudinary.com/dfo4k5eel/video/upload/v1690000000/IMG_9351_wmlqs5.mp4",
     poster:
@@ -24,6 +32,14 @@ const VIDEOS = [
       "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/samba_carnival_3_ac29l1.jpg",
     description:
       "Exciting live performance showcasing energy and stage presence.",
+  },
+  {
+    label: "Afro Dance Class",
+    src: "https://res.cloudinary.com/dfo4k5eel/video/upload/454178cd-e0a3-48ae-bd49-f5d1a32143ef_erz7lo.mp4",
+    poster:
+      "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/454178cd-e0a3-48ae-bd49-f5d1a32143ef_erz7lo.jpg",
+    description:
+      "Dynamic Afro dance routines blending traditional African movement with modern grooves.",
   },
   {
     label: "Gogo Dance",
@@ -45,6 +61,14 @@ const VIDEOS = [
     poster:
       "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/bcff59b8-009d-47ec-a271-c60a459d8868_g8wq6c.jpg",
     description: "Confidence-building dance with sexy, graceful movements.",
+  },
+  {
+    label: "Afro Dance Fusion",
+    src: "https://res.cloudinary.com/dfo4k5eel/video/upload/668c9e58-68f0-43ce-8879-4cf31440ef5d_mss81f.mp4",
+    poster:
+      "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/668c9e58-68f0-43ce-8879-4cf31440ef5d_mss81f.jpg",
+    description:
+      "High-energy Afro dance fusion focusing on rhythm, stamina, and expressive movement.",
   },
   {
     label: "Dance Music / Video Vixen",

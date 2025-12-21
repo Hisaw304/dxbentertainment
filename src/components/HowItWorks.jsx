@@ -1,5 +1,12 @@
 import React from "react";
-import { CalendarCheck, Users, Music, PartyPopper } from "lucide-react";
+import {
+  CalendarCheck,
+  Users,
+  Music,
+  PartyPopper,
+  CreditCard,
+  Upload,
+} from "lucide-react";
 
 export default function HowItWorks() {
   return (
@@ -37,8 +44,12 @@ export default function HowItWorks() {
                 Pick your schedule or package
               </li>
               <li>
-                <PartyPopper size={16} />
-                Confirm details and pay securely
+                <CreditCard size={16} />
+                Make payment
+              </li>
+              <li>
+                <Upload size={16} />
+                Upload payment receipt & confirm
               </li>
             </ol>
           </div>
