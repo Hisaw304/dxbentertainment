@@ -221,6 +221,8 @@ export function BookAClass() {
         type: "error",
         text: "Please upload your payment receipt.",
       });
+
+      document.getElementById("receipt-input")?.focus();
       return;
     }
 
@@ -583,6 +585,7 @@ export function BookAClass() {
 
                     <label className="receipt-dropzone">
                       <input
+                        id="receipt-input"
                         type="file"
                         name="receipt"
                         accept="image/*,.pdf"
@@ -662,6 +665,19 @@ export function BookAClass() {
                       >
                         Edit Booking
                       </button>
+                      {message && (
+                        <div
+                          className={`form-message ${message.type}`}
+                          style={{
+                            marginBottom: "12px",
+                            color:
+                              message.type === "error" ? "#d32f2f" : "#2e7d32",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {message.text}
+                        </div>
+                      )}
 
                       <button
                         type="button"

@@ -68,16 +68,17 @@ export default async function handler(req, res) {
       }
 
       /* ---------- CLOUDINARY UPLOAD ---------- */
+      const getFile = (f) => (Array.isArray(f) ? f[0] : f);
+
       let receiptUrl = null;
 
-      if (files?.receipt?.filepath) {
-        const upload = await cloudinary.uploader.upload(
-          files.receipt.filepath,
-          {
-            folder: process.env.CLOUDINARY_FOLDER || "payment-receipts",
-            resource_type: "image",
-          }
-        );
+      const receiptFile = getFile(files?.receipt);
+
+      if (receiptFile?.filepath) {
+        const upload = await cloudinary.uploader.upload(receiptFile.filepath, {
+          folder: process.env.CLOUDINARY_FOLDER || "payment-receipts",
+          resource_type: "auto", // supports image + pdf
+        });
 
         receiptUrl = upload.secure_url;
       }
