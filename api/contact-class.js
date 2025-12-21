@@ -52,14 +52,14 @@ export default async function handler(req, res) {
       });
 
       /* ---------- RECEIPT ATTACHMENT ---------- */
-      const attachments = files.receipt
-        ? [
-            {
-              filename: files.receipt.originalFilename,
-              content: fs.readFileSync(files.receipt.filepath),
-            },
-          ]
-        : [];
+      let attachments = [];
+
+      if (files?.receipt?.filepath) {
+        attachments.push({
+          filename: files.receipt.originalFilename || "payment-receipt",
+          content: fs.readFileSync(files.receipt.filepath),
+        });
+      }
 
       /* ---------- CLIENT EMAIL ---------- */
       const clientMail = {

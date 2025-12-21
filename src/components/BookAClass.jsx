@@ -509,122 +509,126 @@ export function BookAClass() {
                 </button>
 
                 <h3>Confirm Your Booking</h3>
+                <div className="confirm-modal-body">
+                  <ul className="confirm-list">
+                    <li>
+                      <strong>Name:</strong> {form.name}
+                    </li>
+                    <li>
+                      <strong>Email:</strong> {form.email}
+                    </li>
+                    <li>
+                      <strong>Phone:</strong> {form.phone}
+                    </li>
+                    <li>
+                      <strong>Dance Style:</strong> {form.danceStyle}
+                    </li>
+                    <li>
+                      <strong>Class Type:</strong> {form.classType}
+                    </li>
 
-                <ul className="confirm-list">
-                  <li>
-                    <strong>Name:</strong> {form.name}
-                  </li>
-                  <li>
-                    <strong>Email:</strong> {form.email}
-                  </li>
-                  <li>
-                    <strong>Phone:</strong> {form.phone}
-                  </li>
-                  <li>
-                    <strong>Dance Style:</strong> {form.danceStyle}
-                  </li>
-                  <li>
-                    <strong>Class Type:</strong> {form.classType}
-                  </li>
+                    {form.classType === "Group" && (
+                      <>
+                        <li>
+                          <strong>Day & Time:</strong> {form.groupDay}
+                        </li>
+                        <li>
+                          <strong>Location:</strong> {displayLocation}
+                        </li>
+                      </>
+                    )}
 
-                  {form.classType === "Group" && (
-                    <>
-                      <li>
-                        <strong>Day & Time:</strong> {form.groupDay}
-                      </li>
-                      <li>
-                        <strong>Location:</strong> {displayLocation}
-                      </li>
-                    </>
-                  )}
+                    {form.classType === "Private" && (
+                      <>
+                        <li>
+                          <strong>Package:</strong> {form.privatePackage}
+                        </li>
+                        <li>
+                          <strong>Preferred Time:</strong> {form.preferredDay} –{" "}
+                          {form.preferredTime}
+                        </li>
+                        <li>
+                          <strong>Location:</strong> {displayLocation}
+                        </li>
+                      </>
+                    )}
 
-                  {form.classType === "Private" && (
-                    <>
-                      <li>
-                        <strong>Package:</strong> {form.privatePackage}
-                      </li>
-                      <li>
-                        <strong>Preferred Time:</strong> {form.preferredDay} –{" "}
-                        {form.preferredTime}
-                      </li>
-                      <li>
-                        <strong>Location:</strong> {displayLocation}
-                      </li>
-                    </>
-                  )}
+                    <li className="price-line">
+                      <strong>Total Price:</strong> {displayPrice}
+                    </li>
+                  </ul>
+                  {/* PAYMENT SECTION */}
+                  <div className="payment-section">
+                    <h4>Payment Instructions</h4>
 
-                  <li className="price-line">
-                    <strong>Total Price:</strong> {displayPrice}
-                  </li>
-                </ul>
-                {/* PAYMENT SECTION */}
-                <div className="payment-section">
-                  <h4>Payment Instructions</h4>
-
-                  <div className="payment-details">
-                    <div>
-                      <strong>Bank:</strong> {PAYMENT_INFO.bankName}
+                    <div className="payment-details">
+                      <div>
+                        <strong>Bank:</strong> {PAYMENT_INFO.bankName}
+                      </div>
+                      <div>
+                        <strong>Account Name:</strong>{" "}
+                        {PAYMENT_INFO.accountName}
+                      </div>
+                      <div>
+                        <strong>Account Number:</strong>{" "}
+                        {PAYMENT_INFO.accountNumber}
+                      </div>
+                      <div>
+                        <strong>IBAN:</strong> {PAYMENT_INFO.iban}
+                      </div>
                     </div>
-                    <div>
-                      <strong>Account Name:</strong> {PAYMENT_INFO.accountName}
-                    </div>
-                    <div>
-                      <strong>Account Number:</strong>{" "}
-                      {PAYMENT_INFO.accountNumber}
-                    </div>
-                    <div>
-                      <strong>IBAN:</strong> {PAYMENT_INFO.iban}
+
+                    <div className="payment-after">
+                      After payment, please upload your receipt below or share
+                      it via:
+                      <div className="payment-links">
+                        <a
+                          href={`https://wa.me/${PAYMENT_INFO.whatsapp}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          WhatsApp: +{PAYMENT_INFO.whatsapp}
+                        </a>
+                        <a href={`mailto:${PAYMENT_INFO.email}`}>
+                          Email: {PAYMENT_INFO.email}
+                        </a>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="payment-after">
-                    After payment, please upload your receipt below or share it
-                    via:
-                    <div className="payment-links">
-                      <a
-                        href={`https://wa.me/${PAYMENT_INFO.whatsapp}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        WhatsApp: +{PAYMENT_INFO.whatsapp}
-                      </a>
-                      <a href={`mailto:${PAYMENT_INFO.email}`}>
-                        Email: {PAYMENT_INFO.email}
-                      </a>
-                    </div>
+                  {/* RECEIPT UPLOAD */}
+                  <div className="receipt-upload">
+                    <label>Upload Payment Receipt</label>
+                    <input
+                      type="file"
+                      name="receipt"
+                      accept="image/*,.pdf"
+                      onChange={(e) => setReceipt(e.target.files[0])}
+                    />
+
+                    {receipt && (
+                      <span className="receipt-name">{receipt.name}</span>
+                    )}
                   </div>
-                </div>
 
-                {/* RECEIPT UPLOAD */}
-                <div className="receipt-upload">
-                  <label>Upload Payment Receipt</label>
-                  <input
-                    type="file"
-                    accept="image/*,.pdf"
-                    onChange={(e) => setReceipt(e.target.files[0])}
-                  />
-                  {receipt && (
-                    <span className="receipt-name">{receipt.name}</span>
-                  )}
-                </div>
+                  <div className="modal-actions">
+                    <button
+                      type="button"
+                      className="modal-btn modal-btn-outline"
+                      onClick={() => setShowConfirm(false)}
+                    >
+                      Edit Booking
+                    </button>
 
-                <div className="modal-actions">
-                  <button
-                    type="button"
-                    className="modal-btn modal-btn-outline"
-                    onClick={() => setShowConfirm(false)}
-                  >
-                    Edit Booking
-                  </button>
-
-                  <button
-                    type="button"
-                    className="modal-btn modal-btn-primary"
-                    onClick={handleSubmit}
-                    disabled={loading || !receipt}
-                  >
-                    {loading ? "Sending..." : "I Have Paid"}
-                  </button>
+                    <button
+                      type="button"
+                      className="modal-btn modal-btn-primary"
+                      onClick={handleSubmit}
+                      disabled={loading || !receipt}
+                    >
+                      {loading ? "Sending..." : "I Have Paid"}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
