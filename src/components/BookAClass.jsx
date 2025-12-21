@@ -230,9 +230,23 @@ export function BookAClass() {
     try {
       const formData = new FormData();
 
-      // send all fields exactly as-is
-      Object.entries(form).forEach(([key, value]) => {
-        formData.append(key, value || "");
+      // clone form so we can clean it
+      const payload = { ...form };
+
+      // ✅ GROUP: remove private-only fields
+      if (payload.classType === "Group") {
+        payload.privatePackage = "";
+        payload.preferredDay = "";
+        payload.preferredTime = "";
+      }
+
+      // ✅ PRIVATE: remove group-only field
+      if (payload.classType === "Private") {
+        payload.groupDay = "";
+      }
+
+      Object.entries(payload).forEach(([key, value]) => {
+        formData.append(key, value);
       });
 
       formData.append("price", displayPrice);
@@ -241,10 +255,10 @@ export function BookAClass() {
 
       const res = await fetch("/api/contact-class", {
         method: "POST",
-        body: formData, // ✅ NO headers
+        body: formData, // ✅ NO headers here
       });
 
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error("Request failed");
 
       setShowConfirm(false);
       setForm(INITIAL_FORM);
@@ -252,7 +266,7 @@ export function BookAClass() {
 
       setMessage({
         type: "success",
-        text: "Your booking request has been sent successfully. We’ll confirm your schedule shortly.",
+        text: "Your request has been sent successfully. We will contact you shortly after payment verification.",
       });
     } catch (err) {
       console.error(err);
