@@ -223,22 +223,8 @@ export function BookAClass() {
     try {
       const formData = new FormData();
 
-      // ✅ clone form so we can clean it
-      const payload = { ...form };
-
-      // ✅ IMPORTANT: remove private-only fields for GROUP class
-      if (payload.classType === "Group") {
-        payload.privatePackage = "";
-        payload.preferredDay = "";
-        payload.preferredTime = "";
-      }
-
-      // ✅ remove group-only field for PRIVATE class
-      if (payload.classType === "Private") {
-        payload.groupDay = "";
-      }
-
-      Object.entries(payload).forEach(([key, value]) => {
+      // ✅ SEND FORM AS-IS (DO NOT MUTATE)
+      Object.entries(form).forEach(([key, value]) => {
         formData.append(key, value);
       });
 
@@ -251,7 +237,7 @@ export function BookAClass() {
         body: formData,
       });
 
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error("Request failed");
 
       setShowConfirm(false);
       setForm(INITIAL_FORM);
@@ -259,9 +245,10 @@ export function BookAClass() {
 
       setMessage({
         type: "success",
-        text: "Your request has been sent successfully. We will get back to you shortly after your payment has been confirmed.",
+        text: "Your request has been sent successfully. We will confirm your booking shortly.",
       });
     } catch (err) {
+      console.error(err);
       setMessage({
         type: "error",
         text: "Something went wrong. Please contact us on WhatsApp.",

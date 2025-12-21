@@ -172,26 +172,33 @@ async function sendEmails({
     to: process.env.SMTP_USER,
     subject: "New Class Booking Received",
     html: `
-<h3>New Booking</h3>
-<p><strong>Name:</strong> ${studentName}</p>
-<p><strong>Email:</strong> ${studentEmail}</p>
-<p><strong>Phone:</strong> ${phone}</p>
-<p><strong>Dance Style:</strong> ${danceStyle}</p>
-<p><strong>Class Type:</strong> ${classType}</p>
+  <div style="font-family:Arial,Helvetica,sans-serif;background:#ffffff;padding:20px;color:#000000;">
+    <h2 style="color:#ff2d84;">New Booking Received</h2>
 
-${
-  classType === "Group"
-    ? `<p><strong>Schedule:</strong> ${groupDay}</p>`
-    : `
-      <p><strong>Package:</strong> ${privatePackage}</p>
-      <p><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</p>
-      <p><strong>Location:</strong> ${location}</p>
-    `
-}
+    <table width="100%" cellpadding="6" cellspacing="0" style="font-size:14px;">
+      <tr><td><strong>Name</strong></td><td>${studentName}</td></tr>
+      <tr><td><strong>Email</strong></td><td>${studentEmail}</td></tr>
+      <tr><td><strong>Phone</strong></td><td>${phone}</td></tr>
+      <tr><td><strong>Dance Style</strong></td><td>${danceStyle}</td></tr>
+      <tr><td><strong>Class Type</strong></td><td>${classType}</td></tr>
 
-<p><strong>Total Paid:</strong> ${amount}</p>
-`,
-    attachments,
+      ${
+        classType === "Group"
+          ? `<tr><td><strong>Schedule</strong></td><td>${groupDay}</td></tr>`
+          : `
+            <tr><td><strong>Package</strong></td><td>${privatePackage}</td></tr>
+            <tr><td><strong>Preferred Time</strong></td><td>${preferredDay} – ${preferredTime}</td></tr>
+            <tr><td><strong>Location</strong></td><td>${location}</td></tr>
+          `
+      }
+
+      <tr>
+        <td><strong>Total Paid</strong></td>
+        <td style="color:#ff2d84;"><strong>AED ${amount}</strong></td>
+      </tr>
+    </table>
+  </div>
+  `,
   };
 
   await transporter.sendMail(studentMail);
