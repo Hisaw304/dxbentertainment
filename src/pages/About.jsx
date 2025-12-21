@@ -152,6 +152,7 @@ export default function About() {
             <h3>Dance Academy & Training</h3>
             <ul>
               <li>Afro Dance</li>
+              <li>Afro Fitness</li>
               <li>Hip-Hop</li>
               <li>Commercial / Heels</li>
               <li>Contemporary</li>
@@ -197,7 +198,7 @@ export default function About() {
       </section>
 
       <div>
-        {/* <PortfolioVideos /> */}
+        <PortfolioVideos />
         {/* CTA */}
         <section className="about-cta">
           <h2>Interested in Working With Us?</h2>

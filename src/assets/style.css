@@ -2803,3 +2803,31 @@ Contact form for dance and class
     height: 250px;
   }
 }
+.instagram-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.instagram-cta p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #555;
+}
+
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: #ff2d84;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instagram-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 45, 132, 0.35);
+}

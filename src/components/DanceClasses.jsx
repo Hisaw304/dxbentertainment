@@ -1,4 +1,5 @@
 import React from "react";
+import { Instagram } from "lucide-react";
 
 // Import your images
 import afroImg from "../assets/afro.jpg";
@@ -89,6 +90,18 @@ const DanceClasses = () => {
             </div>
           </div>
         ))}
+      </div>
+      {/* Instagram CTA – place it HERE */}
+      <div className="instagram-cta">
+        <a
+          href="https://www.instagram.com/afro_dance_hall9?igsh=MWhoc29rcWFza21qYg=="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="instagram-link"
+        >
+          <Instagram size={18} />
+          View more dance videos on Instagram
+        </a>
       </div>
     </section>
   );
