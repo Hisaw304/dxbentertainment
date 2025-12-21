@@ -132,14 +132,21 @@ function clientEmailTemplate({
       <ul style="line-height:1.6;">
         <li><strong>Dance Style:</strong> ${danceStyle}</li>
         <li><strong>Class Type:</strong> ${classType}</li>
-        ${
-          classType === "Group"
-            ? `<li><strong>Day & Time:</strong> ${groupDay}</li>`
-            : `
-              <li><strong>Package:</strong> ${privatePackage}</li>
-              <li><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</li>
-            `
-        }
+      ${
+        classType === "Group" && groupDay
+          ? `<li><strong>Day & Time:</strong> ${groupDay}</li>`
+          : ""
+      }
+
+${
+  classType === "Private"
+    ? `
+    <li><strong>Package:</strong> ${privatePackage}</li>
+    <li><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</li>
+  `
+    : ""
+}
+
         <li><strong>Location:</strong> ${location}</li>
         <li><strong>Total Price:</strong> ${price}</li>
       </ul>
@@ -180,14 +187,21 @@ function studioEmailTemplate({
         <li><strong>Phone:</strong> ${phone}</li>
         <li><strong>Dance Style:</strong> ${danceStyle}</li>
         <li><strong>Class Type:</strong> ${classType}</li>
-        ${
-          classType === "Group"
-            ? `<li><strong>Day & Time:</strong> ${groupDay}</li>`
-            : `
-              <li><strong>Package:</strong> ${privatePackage}</li>
-              <li><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</li>
-            `
-        }
+      ${
+        classType === "Group" && groupDay
+          ? `<li><strong>Day & Time:</strong> ${groupDay}</li>`
+          : ""
+      }
+
+${
+  classType === "Private"
+    ? `
+    <li><strong>Package:</strong> ${privatePackage}</li>
+    <li><strong>Preferred Time:</strong> ${preferredDay} – ${preferredTime}</li>
+  `
+    : ""
+}
+
         <li><strong>Location:</strong> ${location}</li>
         <li><strong>Price:</strong> ${price}</li>
       </ul>

@@ -359,25 +359,58 @@ Contact form for dance and class
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  backdrop-filter: blur(4px);
 }
 .confirm-modal {
   background: #fff;
   color: #111;
-  padding: 2rem;
+  width: 95%;
+  max-width: 460px;
+  max-height: 90vh;
   border-radius: 20px;
-  width: 100%;
-  max-width: 440px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 🔴 important */
 }
 
 .modal-header {
   margin-bottom: 1.5rem;
+}
+.confirm-modal h3 {
+  margin: 0;
+  padding: 18px 20px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.confirm-modal-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+.confirm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+
+.confirm-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
 .modal-header h3 {
@@ -495,16 +528,25 @@ Contact form for dance and class
   position: absolute;
   top: 14px;
   right: 14px;
+  z-index: 3;
   background: #f2f2f2;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+.modal-close:hover {
+  background: #e5e5e5;
+}
+.modal-footer {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .modal-close:hover {
@@ -2242,6 +2284,66 @@ Contact form for dance and class
   transform: translateY(-20px);
   pointer-events: none;
 }
+/* RECEIPT UPLOAD */
+.receipt-upload {
+  margin-top: 1.5rem;
+  margin-bottom: 6px;
+  padding: 1.25rem;
+  border: 1.5px dashed #ddd;
+  border-radius: 14px;
+  background: #fafafa;
+}
+
+.receipt-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.receipt-help {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* CLICKABLE UPLOAD AREA */
+.receipt-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 2px solid var(--dxb-pink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.receipt-dropzone:hover {
+  background: #fff5fa;
+}
+
+.receipt-dropzone-text {
+  font-weight: 600;
+  color: var(--dxb-pink);
+  margin-bottom: 0.25rem;
+}
+
+.receipt-dropzone-sub {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* SUCCESS MESSAGE */
+.receipt-success {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #1a7f37;
+}
+
 .confirm-list {
   list-style: none;
   padding: 0;

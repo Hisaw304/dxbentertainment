@@ -223,7 +223,22 @@ export function BookAClass() {
     try {
       const formData = new FormData();
 
-      Object.entries(form).forEach(([key, value]) => {
+      // ✅ clone form so we can clean it
+      const payload = { ...form };
+
+      // ✅ IMPORTANT: remove private-only fields for GROUP class
+      if (payload.classType === "Group") {
+        payload.privatePackage = "";
+        payload.preferredDay = "";
+        payload.preferredTime = "";
+      }
+
+      // ✅ remove group-only field for PRIVATE class
+      if (payload.classType === "Private") {
+        payload.groupDay = "";
+      }
+
+      Object.entries(payload).forEach(([key, value]) => {
         formData.append(key, value);
       });
 
@@ -510,6 +525,79 @@ export function BookAClass() {
 
                 <h3>Confirm Your Booking</h3>
                 <div className="confirm-modal-body">
+                  {/* PAYMENT SECTION */}
+                  <div className="payment-section">
+                    <h4>Payment Instructions</h4>
+
+                    <div className="payment-details">
+                      <div>
+                        <strong>Bank:</strong> {PAYMENT_INFO.bankName}
+                      </div>
+                      <div>
+                        <strong>Account Name:</strong>{" "}
+                        {PAYMENT_INFO.accountName}
+                      </div>
+                      <div>
+                        <strong>Account Number:</strong>{" "}
+                        {PAYMENT_INFO.accountNumber}
+                      </div>
+                      <div>
+                        <strong>IBAN:</strong> {PAYMENT_INFO.iban}
+                      </div>
+                    </div>
+
+                    <div className="payment-after">
+                      After payment, please upload your receipt below or share
+                      it via:
+                      <div className="payment-links">
+                        <a
+                          href={`https://wa.me/${PAYMENT_INFO.whatsapp}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          WhatsApp: +{PAYMENT_INFO.whatsapp}
+                        </a>
+                        <a href={`mailto:${PAYMENT_INFO.email}`}>
+                          Email: {PAYMENT_INFO.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* RECEIPT UPLOAD */}
+                  <div className="receipt-upload">
+                    <h4 className="receipt-title">Upload Payment Proof</h4>
+
+                    <p className="receipt-help">
+                      Please upload a screenshot or PDF of your bank transfer
+                      confirmation. This is required to verify your booking.
+                    </p>
+
+                    <label className="receipt-dropzone">
+                      <input
+                        type="file"
+                        name="receipt"
+                        accept="image/*,.pdf"
+                        onChange={(e) => setReceipt(e.target.files[0])}
+                        hidden
+                      />
+
+                      <span className="receipt-dropzone-text">
+                        {receipt
+                          ? "Change file"
+                          : "Click to upload or tap to choose file"}
+                      </span>
+                      <span className="receipt-dropzone-sub">
+                        JPG, PNG or PDF • Max 5MB
+                      </span>
+                    </label>
+
+                    {receipt && (
+                      <div className="receipt-success">
+                        ✅ Uploaded: <strong>{receipt.name}</strong>
+                      </div>
+                    )}
+                  </div>
                   <ul className="confirm-list">
                     <li>
                       <strong>Name:</strong> {form.name}
@@ -557,77 +645,25 @@ export function BookAClass() {
                       <strong>Total Price:</strong> {displayPrice}
                     </li>
                   </ul>
-                  {/* PAYMENT SECTION */}
-                  <div className="payment-section">
-                    <h4>Payment Instructions</h4>
+                  <div className="modal-footer">
+                    <div className="modal-actions">
+                      <button
+                        type="button"
+                        className="modal-btn modal-btn-outline"
+                        onClick={() => setShowConfirm(false)}
+                      >
+                        Edit Booking
+                      </button>
 
-                    <div className="payment-details">
-                      <div>
-                        <strong>Bank:</strong> {PAYMENT_INFO.bankName}
-                      </div>
-                      <div>
-                        <strong>Account Name:</strong>{" "}
-                        {PAYMENT_INFO.accountName}
-                      </div>
-                      <div>
-                        <strong>Account Number:</strong>{" "}
-                        {PAYMENT_INFO.accountNumber}
-                      </div>
-                      <div>
-                        <strong>IBAN:</strong> {PAYMENT_INFO.iban}
-                      </div>
+                      <button
+                        type="button"
+                        className="modal-btn modal-btn-primary"
+                        onClick={handleSubmit}
+                        disabled={loading || !receipt}
+                      >
+                        {loading ? "Sending..." : "I Have Paid"}
+                      </button>
                     </div>
-
-                    <div className="payment-after">
-                      After payment, please upload your receipt below or share
-                      it via:
-                      <div className="payment-links">
-                        <a
-                          href={`https://wa.me/${PAYMENT_INFO.whatsapp}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          WhatsApp: +{PAYMENT_INFO.whatsapp}
-                        </a>
-                        <a href={`mailto:${PAYMENT_INFO.email}`}>
-                          Email: {PAYMENT_INFO.email}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* RECEIPT UPLOAD */}
-                  <div className="receipt-upload">
-                    <label>Upload Payment Receipt</label>
-                    <input
-                      type="file"
-                      name="receipt"
-                      accept="image/*,.pdf"
-                      onChange={(e) => setReceipt(e.target.files[0])}
-                    />
-
-                    {receipt && (
-                      <span className="receipt-name">{receipt.name}</span>
-                    )}
-                  </div>
-
-                  <div className="modal-actions">
-                    <button
-                      type="button"
-                      className="modal-btn modal-btn-outline"
-                      onClick={() => setShowConfirm(false)}
-                    >
-                      Edit Booking
-                    </button>
-
-                    <button
-                      type="button"
-                      className="modal-btn modal-btn-primary"
-                      onClick={handleSubmit}
-                      disabled={loading || !receipt}
-                    >
-                      {loading ? "Sending..." : "I Have Paid"}
-                    </button>
                   </div>
                 </div>
               </div>
