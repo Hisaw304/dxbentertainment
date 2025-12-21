@@ -151,35 +151,29 @@ export async function sendEmails({
           <td align="right">${classType}</td>
         </tr>
 
-        ${
-          classType === "Group" && groupDay
-            ? `
-            <tr>
-              <td><strong>Schedule</strong></td>
-              <td align="right">${groupDay}</td>
-            </tr>
-          `
-            : ""
-        }
-
-        ${
-          classType === "Private"
-            ? `
-            <tr>
-              <td><strong>Package</strong></td>
-              <td align="right">${privatePackage}</td>
-            </tr>
-            <tr>
-              <td><strong>Preferred Time</strong></td>
-              <td align="right">${preferredDay} – ${preferredTime}</td>
-            </tr>
-            <tr>
-              <td><strong>Location</strong></td>
-              <td align="right">${location}</td>
-            </tr>
-          `
-            : ""
-        }
+      ${
+        classType === "Group"
+          ? `
+                <tr>
+                  <td><strong>Schedule</strong></td>
+                  <td align="right">${groupDay}</td>
+                </tr>
+              `
+          : `
+                <tr>
+                  <td><strong>Package</strong></td>
+                  <td align="right">${privatePackage}</td>
+                </tr>
+                <tr>
+                  <td><strong>Preferred Time</strong></td>
+                  <td align="right">${preferredDay} – ${preferredTime}</td>
+                </tr>
+                <tr>
+                  <td><strong>Location</strong></td>
+                  <td align="right">${location}</td>
+                </tr>
+              `
+      }
 
         <tr>
           <td style="padding-top:10px;border-top:1px solid #ddd;">
@@ -220,21 +214,16 @@ export async function sendEmails({
     <tr><td><strong>Dance Style</strong></td><td>${danceStyle}</td></tr>
     <tr><td><strong>Class Type</strong></td><td>${classType}</td></tr>
 
-    ${
-      classType === "Group" && groupDay
-        ? `<tr><td><strong>Schedule</strong></td><td>${groupDay}</td></tr>`
-        : ""
-    }
-
-    ${
-      classType === "Private"
-        ? `
-        <tr><td><strong>Package</strong></td><td>${privatePackage}</td></tr>
-        <tr><td><strong>Preferred Time</strong></td><td>${preferredDay} – ${preferredTime}</td></tr>
-        <tr><td><strong>Location</strong></td><td>${location}</td></tr>
-      `
-        : ""
-    }
+   
+      ${
+        classType === "Group"
+          ? `<tr><td><strong>Schedule</strong></td><td>${groupDay}</td></tr>`
+          : `
+            <tr><td><strong>Package</strong></td><td>${privatePackage}</td></tr>
+            <tr><td><strong>Preferred Time</strong></td><td>${preferredDay} – ${preferredTime}</td></tr>
+            <tr><td><strong>Location</strong></td><td>${location}</td></tr>
+          `
+      }
 
     <tr>
       <td><strong>Total Paid</strong></td>
