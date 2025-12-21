@@ -3,11 +3,12 @@ import React from "react";
 // Import your images
 import afroImg from "../assets/afro.jpg";
 import hiphopImg from "../assets/hiphop.jpg";
-import zumbaImg from "../assets/zumba.jpg";
+import zumbaImg from "../assets/zumba1.jpg";
 import amapianoImg from "../assets/amapiano.jpg";
 import heelsImg from "../assets/afro-sexy.jpg";
 import contemporaryImg from "../assets/contemporary.jpg";
 import sambaImg from "../assets/weddings1.jpg";
+import afroFitnessImg from "../assets/afrofitness.jpg";
 
 const DANCE_STYLES = [
   {
@@ -15,6 +16,13 @@ const DANCE_STYLES = [
     img: afroImg,
     description: "High-energy Afrobeat rhythms to get you moving and grooving.",
   },
+  {
+    label: "Afro Fitness",
+    img: afroFitnessImg,
+    description:
+      "A fun, sweat-filled Afrobeat workout that combines dance, cardio, and body-toning movements to keep you energized and fit.",
+  },
+
   {
     label: "Hip Hop",
     img: hiphopImg,

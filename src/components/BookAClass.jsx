@@ -7,6 +7,15 @@ const showVideo = {
     "https://res.cloudinary.com/dfo4k5eel/video/upload/so_0/v1690000000/cc025096-7015-46fd-bcd6-c87b7016e7e3_cl8qhu.jpg",
 };
 export function BookAClass() {
+  const PAYMENT_INFO = {
+    bankName: "FAB",
+    accountName: "FAITH ANITA OKAFUDA",
+    accountNumber: "1161001932639019",
+    iban: "AE290271161001932639019",
+    whatsapp: "971558758934",
+    email: "info@dxbstarsetm.com",
+  };
+
   /* ---------------- INITIAL STATE ---------------- */
   const INITIAL_FORM = {
     name: "",
@@ -25,6 +34,7 @@ export function BookAClass() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [receipt, setReceipt] = useState(null);
 
   /* ---------------- CONSTANTS ---------------- */
   const DANCE_STYLES = [
@@ -32,6 +42,7 @@ export function BookAClass() {
     { label: "Hip Hop", type: "both" },
     { label: "Zumba", type: "both" },
     { label: "Amapiano", type: "both" },
+    { label: "Afro Fitness", type: "both" },
     { label: "Afro Sexy Ladies Heels", type: "both" },
     { label: "Contemporary", type: "private" },
     { label: "Samba", type: "private" },
@@ -77,10 +88,13 @@ export function BookAClass() {
 
     // GROUP CLASS PRICING
     if (form.classType === "Group") {
-      if (form.danceStyle === "Afro Sexy Ladies Heels") {
-        return "90 AED";
+      if (
+        form.danceStyle === "Afro Sexy Ladies Heels" ||
+        form.danceStyle === "Afro Fitness"
+      ) {
+        return "93 AED";
       }
-      return "80 AED";
+      return "83 AED";
     }
 
     // PRIVATE CLASS PRICING
@@ -89,9 +103,9 @@ export function BookAClass() {
       const isPremium = premiumStyles.includes(form.danceStyle);
 
       const pricing = {
-        "1 Class": isPremium ? "350 AED" : "350 AED",
-        "3 Classes": isPremium ? "960 AED" : "840 AED",
-        "Monthly (6 Classes)": isPremium ? "1800 AED" : "1500 AED",
+        "1 Class": isPremium ? "353 AED" : "353 AED",
+        "3 Classes": isPremium ? "963 AED" : "843 AED",
+        "Monthly (6 Classes)": isPremium ? "1803 AED" : "1503 AED",
       };
 
       return pricing[form.privatePackage];
@@ -171,32 +185,73 @@ export function BookAClass() {
     };
   }, [showConfirm]);
   /* ---------------- FINAL SUBMIT ---------------- */
+  // async function handleSubmit() {
+  //   setLoading(true);
+  //   setMessage(null);
+
+  //   try {
+  //     const res = await fetch("/api/create-checkout-session", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(form),
+  //     });
+
+  //     if (!res.ok) throw new Error("Failed to create checkout session");
+
+  //     const data = await res.json();
+
+  //     if (!data.url) {
+  //       throw new Error("No checkout URL returned");
+  //     }
+
+  //     window.location.href = data.url;
+  //   } catch (err) {
+  //     console.error(err);
+  //     setMessage({
+  //       type: "error",
+  //       text: "Payment could not be started. Please try again or contact us on WhatsApp.",
+  //     });
+  //     setLoading(false);
+  //   }
+  // }
   async function handleSubmit() {
+    if (!receipt) return;
+
     setLoading(true);
     setMessage(null);
 
     try {
-      const res = await fetch("/api/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+      const formData = new FormData();
+
+      Object.entries(form).forEach(([key, value]) => {
+        formData.append(key, value);
       });
 
-      if (!res.ok) throw new Error("Failed to create checkout session");
+      formData.append("price", displayPrice);
+      formData.append("location", displayLocation);
+      formData.append("receipt", receipt);
 
-      const data = await res.json();
+      const res = await fetch("/api/contact-class", {
+        method: "POST",
+        body: formData,
+      });
 
-      if (!data.url) {
-        throw new Error("No checkout URL returned");
-      }
+      if (!res.ok) throw new Error();
 
-      window.location.href = data.url;
+      setShowConfirm(false);
+      setForm(INITIAL_FORM);
+      setReceipt(null);
+
+      setMessage({
+        type: "success",
+        text: "Your request has been sent successfully. We will get back to you shortly after your payment has been confirmed.",
+      });
     } catch (err) {
-      console.error(err);
       setMessage({
         type: "error",
-        text: "Payment could not be started. Please try again or contact us on WhatsApp.",
+        text: "Something went wrong. Please contact us on WhatsApp.",
       });
+    } finally {
       setLoading(false);
     }
   }
@@ -442,7 +497,7 @@ export function BookAClass() {
 
           {/* CONFIRMATION MODAL */}
           {showConfirm && (
-            <div className="confirm-modal-overlay">
+            <div className="confirm-modal-overlay z-9999">
               <div className="confirm-modal">
                 <button
                   type="button"
@@ -455,7 +510,7 @@ export function BookAClass() {
 
                 <h3>Confirm Your Booking</h3>
 
-                <ul>
+                <ul className="confirm-list">
                   <li>
                     <strong>Name:</strong> {form.name}
                   </li>
@@ -502,6 +557,57 @@ export function BookAClass() {
                     <strong>Total Price:</strong> {displayPrice}
                   </li>
                 </ul>
+                {/* PAYMENT SECTION */}
+                <div className="payment-section">
+                  <h4>Payment Instructions</h4>
+
+                  <div className="payment-details">
+                    <div>
+                      <strong>Bank:</strong> {PAYMENT_INFO.bankName}
+                    </div>
+                    <div>
+                      <strong>Account Name:</strong> {PAYMENT_INFO.accountName}
+                    </div>
+                    <div>
+                      <strong>Account Number:</strong>{" "}
+                      {PAYMENT_INFO.accountNumber}
+                    </div>
+                    <div>
+                      <strong>IBAN:</strong> {PAYMENT_INFO.iban}
+                    </div>
+                  </div>
+
+                  <div className="payment-after">
+                    After payment, please upload your receipt below or share it
+                    via:
+                    <div className="payment-links">
+                      <a
+                        href={`https://wa.me/${PAYMENT_INFO.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        WhatsApp: +{PAYMENT_INFO.whatsapp}
+                      </a>
+                      <a href={`mailto:${PAYMENT_INFO.email}`}>
+                        Email: {PAYMENT_INFO.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* RECEIPT UPLOAD */}
+                <div className="receipt-upload">
+                  <label>Upload Payment Receipt</label>
+                  <input
+                    type="file"
+                    accept="image/*,.pdf"
+                    onChange={(e) => setReceipt(e.target.files[0])}
+                  />
+                  {receipt && (
+                    <span className="receipt-name">{receipt.name}</span>
+                  )}
+                </div>
+
                 <div className="modal-actions">
                   <button
                     type="button"
@@ -515,9 +621,9 @@ export function BookAClass() {
                     type="button"
                     className="modal-btn modal-btn-primary"
                     onClick={handleSubmit}
-                    disabled={loading}
+                    disabled={loading || !receipt}
                   >
-                    {loading ? "Processing..." : "Pay Now"}
+                    {loading ? "Sending..." : "I Have Paid"}
                   </button>
                 </div>
               </div>

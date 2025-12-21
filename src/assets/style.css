@@ -362,7 +362,7 @@ Contact form for dance and class
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 9999;
   backdrop-filter: blur(4px);
 }
 .confirm-modal {
@@ -1988,7 +1988,7 @@ Contact form for dance and class
 .about-preview-image {
   width: 100%;
   max-width: 460px;
-  height: 460px;
+  /* height: 460px; */
   border-radius: var(--svc-radius);
   box-shadow: var(--svc-shadow);
   overflow: hidden;
@@ -2241,6 +2241,76 @@ Contact form for dance and class
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
+}
+.confirm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.confirm-list li {
+  margin-bottom: 8px;
+}
+
+.price-line {
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* PAYMENT */
+.payment-section {
+  margin-top: 24px;
+  padding: 18px;
+  background: var(--dxb-white);
+  border-radius: var(--svc-radius);
+  box-shadow: var(--svc-shadow);
+}
+
+.payment-section h4 {
+  color: var(--dxb-pink);
+  margin-bottom: 12px;
+}
+
+.payment-details div {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.payment-after {
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--dxb-yellow);
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.payment-links {
+  margin-top: 6px;
+}
+
+.payment-links a {
+  display: block;
+  font-weight: 600;
+  color: var(--dxb-black);
+}
+
+/* RECEIPT */
+.receipt-upload {
+  margin-top: 18px;
+}
+
+.receipt-upload label {
+  display: block;
+  font-weight: 600;
+  color: var(--dxb-pink);
+  margin-bottom: 6px;
+}
+
+.receipt-name {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
 }
 
 /* ===============================

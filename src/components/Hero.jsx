@@ -254,7 +254,6 @@ export default function Hero({
           >
             Contact Us Now
           </Link>
-          ;
         </div>
       </motion.div>
 
