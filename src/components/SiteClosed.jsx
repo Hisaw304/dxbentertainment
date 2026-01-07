@@ -1,16 +1,20 @@
 import React from "react";
+import bgGif from "/bg.gif";
 
 export default function SiteClosed() {
   return (
-    <section className="page_404">
-      <div className="container">
+    <section className="page-404">
+      <div className="container mx-auto px-6">
         <div className="text-center">
-          <div className="four_zero_four_bg">
+          <div
+            className="four-zero-four-bg"
+            style={{ backgroundImage: "url(/bg.gif)" }}
+          >
             <h1>404</h1>
           </div>
 
-          <div className="contant_box_404">
-            <h3>Website Temporarily Unavailable</h3>
+          <div className="content-box-404">
+            <h2>Website Temporarily Unavailable</h2>
 
             <p>
               This website is currently offline due to pending project
