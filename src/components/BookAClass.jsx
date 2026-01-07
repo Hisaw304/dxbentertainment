@@ -232,17 +232,14 @@ export function BookAClass() {
     try {
       const formData = new FormData();
 
-      // clone form so we can clean it
       const payload = { ...form };
 
-      // ✅ GROUP: remove private-only fields
       if (payload.classType === "Group") {
         payload.privatePackage = "";
         payload.preferredDay = "";
         payload.preferredTime = "";
       }
 
-      // ✅ PRIVATE: remove group-only field
       if (payload.classType === "Private") {
         payload.groupDay = "";
       }
@@ -257,7 +254,7 @@ export function BookAClass() {
 
       const res = await fetch("/api/contact-class", {
         method: "POST",
-        body: formData, // ✅ NO headers here
+        body: formData,
       });
 
       if (!res.ok) throw new Error("Request failed");
