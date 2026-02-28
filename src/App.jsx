@@ -7,14 +7,14 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
-import SiteClosed from "./components/SiteClosed";
+// import SiteClosed from "./components/SiteClosed";
 
 const SITE_CLOSED = true;
 
 const App = () => {
-  if (SITE_CLOSED) {
-    return <SiteClosed />;
-  }
+  // if (SITE_CLOSED) {
+  //   return <SiteClosed />;
+  // }
 
   return (
     <div className="min-h-screen flex flex-col">

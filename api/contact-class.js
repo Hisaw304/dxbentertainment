@@ -135,9 +135,9 @@ async function sendEmails({
   preferredTime,
   location,
   amount,
-  receiptUrl, // 👈 Cloudinary URL
+  receiptUrl,
 }) {
-  /* ---------- STUDENT EMAIL (UNCHANGED) ---------- */
+  /* ---------- STUDENT EMAIL ---------- */
   const studentMail = {
     from: `"DXB Entertainment" <${process.env.SMTP_USER}>`,
     to: studentEmail,
