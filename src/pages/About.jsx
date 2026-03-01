@@ -201,7 +201,7 @@ export default function About() {
         <PortfolioVideos />
         {/* CTA */}
         <section className="about-cta">
-          <h2>Interested in Working With Us?</h2>
+          <h1>Interested in Working With Us?</h1>
           <p className="about-cta-sub">
             Whether you’re looking to book professional dancers or join our
             dance classes, DXB STARS makes the process simple.
