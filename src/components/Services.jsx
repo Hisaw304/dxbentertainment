@@ -9,15 +9,6 @@ import imgPrivate from "../assets/private-coaching1.jpg";
 import imgKids from "../assets/kids-teens.jpg";
 import imgDrummers from "../assets/africa-drummers.jpg";
 
-/**
- * Services.jsx
- * - Two blocks: Performance Services & Dance Academy Services
- * - Responsive: lg=3 / md=2 / sm=1
- * - Headings: pink, subheading: black
- * - Images used from assets (top of card) - object-position: top center
- * - Primary CTA (Hire / Book) and secondary "Learn more" -> /services
- */
-
 const ServiceCard = ({
   img,
   title,

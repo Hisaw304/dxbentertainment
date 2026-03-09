@@ -11,6 +11,10 @@ import imgClub from "../assets/club-dancers.jpg";
 import imgCostume from "../assets/dance-costume-rental.jpg";
 import Services from "../components/Services";
 import imgServicesHero from "../assets/services-hero.jpg";
+import imgBelly from "../assets/belly-dancers.jpg";
+import imgAerial from "../assets/aerial-dancers.jpg";
+import imgFire from "../assets/fire-dancers1.jpg";
+import imgBollywood from "../assets/bollywood-dancers3.jpg";
 import WhatsApp from "../components/Whatsapp";
 import DanceClasses from "../components/DanceClasses";
 import SEOMeta from "../components/SEOMeta";
@@ -110,6 +114,43 @@ export default function ServicesPage() {
         reverse
         text="Live African drumming that brings rhythm, power, and energy to any
         event. A full sensory experience that connects culture and celebration."
+      />
+      <ServiceFeature
+        title="Belly Dancers"
+        img={imgBelly}
+        cta="Hire Belly Dancers"
+        text="Elegant belly dance performances featuring fluid movements,
+  captivating costumes, and mesmerizing rhythms. Perfect for weddings,
+  luxury events, themed parties, and cultural celebrations."
+      />
+
+      <ServiceFeature
+        title="Aerial Dancers"
+        img={imgAerial}
+        cta="Hire Aerial Dancers"
+        reverse
+        text="Spectacular aerial dance performances combining acrobatics,
+  strength, and artistry. Performers soar above the audience using
+  silks, hoops, or harnesses to create unforgettable visual moments."
+      />
+
+      <ServiceFeature
+        title="Fire Dancers"
+        img={imgFire}
+        cta="Hire Fire Dancers"
+        text="Thrilling fire dance shows featuring skilled performers spinning,
+  juggling, and controlling flames. Perfect for outdoor events, night
+  shows, beach parties, and high-impact entertainment."
+      />
+
+      <ServiceFeature
+        title="Bollywood Dancers"
+        img={imgBollywood}
+        cta="Hire Bollywood Dancers"
+        reverse
+        text="Vibrant Bollywood dance performances filled with colorful costumes,
+  expressive storytelling, and energetic choreography that bring the
+  spirit of Indian celebrations to weddings, festivals, and themed events."
       />
 
       {/* ACADEMY SERVICES */}
