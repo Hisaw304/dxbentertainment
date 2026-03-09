@@ -1839,7 +1839,7 @@ Contact form for dance and class
 }
 /* CTA */
 .about-cta {
-  background: #f8f8f8;
+  background: #ffd400;
   text-align: center;
   padding: 5.5rem 1.5rem;
 }
@@ -1918,7 +1918,7 @@ Contact form for dance and class
   box-shadow: 0 6px 18px rgba(255, 45, 132, 0.25);
 }
 .about-btn-outline {
-  background: transparent;
+  background: white;
   color: var(--dxb-black);
   border: 1.5px solid rgba(0, 0, 0, 0.15);
 }
