@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { Instagram } from "lucide-react";
 const VIDEOS = [
   {
     label: "Afro Beat Dance Class",
@@ -150,6 +150,17 @@ const PortfolioVideos = () => {
           </motion.div>
         ))}
       </motion.div>
+      <div className="instagram-cta">
+        <a
+          href="https://www.instagram.com/afro_dance_hall9?igsh=MWhoc29rcWFza21qYg=="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="instagram-link"
+        >
+          <Instagram size={18} />
+          View More Videos On Instagram
+        </a>
+      </div>
     </section>
   );
 };
